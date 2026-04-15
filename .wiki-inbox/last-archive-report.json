@@ -1,0 +1,24 @@
+{
+  "version": 4,
+  "generated_at": "2026-04-15T11:58:30.673084+00:00",
+  "dry_run": false,
+  "archive_dir": "raw/2026/0415",
+  "manifest": ".wiki-inbox/processed-manifest.json",
+  "entries_count": 1,
+  "results": [
+    {
+      "inbox_path": "raw/inbox/T10_T10-3 First Experimental Demonstration of Dual-sided NP FETs in Flip FET (FFET) on .pdf",
+      "archive_path": "raw/2026/0415/T10_T10-3 First Experimental Demonstration of Dual-sided NP FETs in Flip FET (FFET) on .pdf",
+      "wiki_pages": [
+        "wiki/flip-fet-stacked-transistor-scaling.md"
+      ],
+      "fingerprint_origin": "inbox",
+      "sha256": "32cd25000dbab0e932b8d296930273470a51f3f5d7d90b5996dd0d5c6dd31a4a",
+      "moved": true,
+      "rewritten_pages": [
+        "wiki/flip-fet-stacked-transistor-scaling.md"
+      ],
+      "already_archived": false
+    }
+  ]
+}
