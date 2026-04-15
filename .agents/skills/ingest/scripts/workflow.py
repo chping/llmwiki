@@ -30,7 +30,7 @@ def run_workflow(
     try:
         if not archive_only:
             run_template = codex_run_template or load_codex_run_template(paths.codex_run_template_file)
-            prompt_file = render_prompt(paths.prompt_template, repo)
+            prompt_file = render_prompt(paths.prompt_template, repo, paths.inbox_rel)
             run_codex_command(
                 run_template=run_template,
                 codex_cmd=codex_cmd,

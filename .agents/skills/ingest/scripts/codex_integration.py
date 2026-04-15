@@ -4,11 +4,12 @@ import subprocess
 from pathlib import Path
 
 
-def render_prompt(prompt_template: Path, repo: Path) -> Path:
+def render_prompt(prompt_template: Path, repo: Path, inbox_rel: str) -> Path:
     import tempfile
 
     text = prompt_template.read_text(encoding="utf-8")
     text = text.replace("{repo}", str(repo.resolve()))
+    text = text.replace("{inbox_dir}", inbox_rel)
 
     with tempfile.NamedTemporaryFile(
         mode="w",

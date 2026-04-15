@@ -7,18 +7,41 @@ from models import WorkflowPaths
 from utils import ensure_text_file
 
 
+def _resolve_skill_file(skill_dir: Path, filename: str) -> Path:
+    direct = skill_dir / filename
+    if direct.exists():
+        return direct
+    referenced = skill_dir / "references" / filename
+    return referenced
+
+
+def _resolve_inbox_dir(repo: Path, raw_dir: Path) -> Path:
+    candidates = (
+        raw_dir / "inbox",
+        repo / "inbox",
+    )
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+
+    return raw_dir / "inbox"
+
+
 def build_paths(repo: Path, skill_dir: Path, today: str | None = None) -> WorkflowPaths:
     dt = datetime.strptime(today, "%Y-%m-%d") if today else datetime.now()
     raw_dir = repo / "raw"
     wiki_dir = repo / "wiki"
     meta_dir = repo / ".wiki-inbox"
+    inbox_dir = _resolve_inbox_dir(repo, raw_dir)
     return WorkflowPaths(
         repo=repo,
         skill_dir=skill_dir,
-        prompt_template=skill_dir / "codex_prompt_template.md",
-        codex_run_template_file=skill_dir / "codex_run_template.txt",
+        prompt_template=_resolve_skill_file(skill_dir, "codex_prompt_template.md"),
+        codex_run_template_file=_resolve_skill_file(skill_dir, "codex_run_template.txt"),
         raw_dir=raw_dir,
-        inbox_dir=raw_dir / "inbox",
+        inbox_dir=inbox_dir,
+        inbox_rel=str(inbox_dir.relative_to(repo)).replace("\\", "/"),
         wiki_dir=wiki_dir,
         index_md=wiki_dir / "index.md",
         log_md=wiki_dir / "log.md",

@@ -20,6 +20,7 @@ class WorkflowPaths:
     codex_run_template_file: Path
     raw_dir: Path
     inbox_dir: Path
+    inbox_rel: str
     wiki_dir: Path
     index_md: Path
     log_md: Path

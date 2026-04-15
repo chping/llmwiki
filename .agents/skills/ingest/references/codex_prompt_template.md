@@ -1,17 +1,17 @@
 You are operating inside a Markdown wiki repository.
 
-Your job is to process files in `raw/inbox/` and update the wiki.
+Your job is to process files in `{inbox_dir}/` and update the wiki.
 
 You must do all content analysis and wiki writing. You must not move or delete raw files.
 
 Repository rules:
-- Analyze all files under `raw/inbox/`.
+- Analyze all files under `{inbox_dir}/`.
 - Summarize important ideas, facts, decisions, and references.
 - Create new topic pages under `wiki/` or merge into existing pages when appropriate.
 - Update `wiki/index.md` so new pages are discoverable.
 - Update `wiki/log.md` with a concise note for today.
 - Every wiki page derived from an inbox file must contain a `## Sources` section.
-- In `## Sources`, add Markdown links pointing to the source file in `raw/inbox/`.
+- In `## Sources`, add Markdown links pointing to the source file in `{inbox_dir}/`.
 - Use relative links from the wiki page location.
 - Avoid duplicate source links.
 - Avoid duplicate log entries.
@@ -30,7 +30,7 @@ Manifest schema:
   "processed_at": "<UTC ISO8601 timestamp>",
   "files": [
     {
-      "inbox_path": "raw/inbox/example-note.md",
+      "inbox_path": "{inbox_dir}/example-note.md",
       "wiki_pages": [
         "wiki/example-note.md"
       ],
@@ -57,7 +57,7 @@ Backlink example:
 ```md
 ## Sources
 
-- [Original source](../raw/inbox/example-note.md)
+- [Original source](../{inbox_dir}/example-note.md)
 ```
 
 Repository root:

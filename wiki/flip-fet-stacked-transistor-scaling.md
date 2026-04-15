@@ -1,59 +1,51 @@
-# Flip FET And Stacked Transistor Scaling Notes
+%%  %%# Flip FET And Stacked Transistor Scaling Notes
 
-This page summarizes a VLSI Symposium presentation from Peking University on the first experimental demonstration of dual-sided N/P FETs in Flip FET (FFET) on 300 mm wafers for stacked-transistor technology aimed at sub-1 nm nodes.
+This page summarizes a 2025 VLSI Symposium presentation from Peking University on the first experimental demonstration of dual-sided N/P FETs in Flip FET (FFET) on 300 mm wafers, positioned as a stacked-transistor option for sub-1 nm logic nodes.
 
-## Core Idea
+## Core Claim
 
-FFET is presented as a self-aligned stacked-transistor approach that places usable devices on both wafer sides. The pitch is that backside processing is no longer only for power delivery or signal routing; it can also host active devices, enabling a dual-sided CMOS integration path with more scaling headroom than conventional monolithic layouts.
+FFET extends backside processing from interconnect-only functions into active-device integration. The architecture stacks usable transistors across both sides of the wafer and aims to keep the devices and interconnects largely symmetric, which the authors present as an advantage over more asymmetric stacked-transistor approaches.
 
-## What The Work Demonstrates
+## What This Work Demonstrates
 
-- Dual-sided N/P FETs fabricated in an FFET flow on 300 mm wafers.
-- A baseline FFET process, flipped frontside-FET process flow, and backside-FET process flow.
-- Key enabling backside steps including wafer bonding, active-wafer thinning, backside fin-profile improvement, and backside overlay correction.
-- Structural confirmation by TEM for symmetric devices and interconnects.
-- Electrical data showing both sides can operate with nearly symmetric behavior.
+- First 300 mm wafer demonstration of dual-sided N/P FETs in FFET.
+- A self-aligned FFET integration flow with frontside processing, wafer bonding, wafer flipping, substrate thinning, active reveal, and backside device processing.
+- Dual-sided CMOS capability, with NFET and PFET placement possible on both frontside and backside.
+- Experimental device data rather than only a concept or process sketch.
 
-## Process Takeaways
+## Process Development Highlights
 
-The presentation emphasizes that FFET depends on integrating several standard but tightly controlled steps rather than inventing an entirely new frontside transistor module. The critical process challenges highlighted in the deck are:
+The deck identifies four enabling process modules for making backside devices practical in FFET:
 
-- High-quality wafer bonding after oxide deposition and surface cleaning.
-- Precise active-wafer substrate thinning with final position and flatness control.
-- Backside fin trimming to avoid reverse-tapered profiles and improve gate control.
-- Backside lithography and overlay correction to tighten alignment residue.
+- Wafer bonding with edge trimming, low particle counts, no bubbles, and reported bonding strength of 2.2 to 3.2 J/m2.
+- Substrate thinning with a SiGe etch-stop layer and final CMP to improve total-thickness variation control.
+- Backside fin trimming using ion-beam etching to improve fin profile, gate control, and channel strain.
+- Backside overlay correction that reduced mean overlay residue to below 3 nm with much tighter distributions.
 
-The overall message is that these process modules were developed to a point where backside device fabrication can be executed without losing the frontside device stack.
+These steps are presented as the main process enablers that let the backside device module use industry-standard flows instead of requiring exotic vertical patterning.
 
-## Electrical And Device Notes
+## Device Results
 
-The deck reports that dual-sided FETs behaved well and achieved nearly symmetric performance. It also calls out:
+- TEM images show frontside and backside FFET devices with 30 nm gate length and broadly symmetric structures.
+- The dual-sided PFET/NFET measurements are described as well behaved, with nearly symmetric on-state performance.
+- The optimized backside PFET at 30 nm gate length is reported with 73.1 mV/dec subthreshold slope, 24 mV DIBL, about 10^7 on/off ratio, and improved transconductance.
+- Frontside NFETs see minor impact from bonding thermals but clearer impact from the full backside process sequence, which motivates explicit thermal-budget management.
 
-- Backside PFET optimization through contact and EOT tuning, then junction, work-function, and implant tuning.
-- A backside PFET example at 30 nm gate length with decent electrostatics, including reported subthreshold slope, DIBL, on/off ratio, and transconductance trends.
-- Minor frontside NFET change from bonding thermals, but clear impact from full backside FET processing, which motivates explicit thermal-budget strategies.
+## FFET Versus CFET Framing
 
-## Architecture Implications
+The authors position FFET as a more manufacturing-friendly stacked-transistor option than CFET in several areas:
 
-The authors position FFET as more than a one-off process demo. The deck highlights several architectural advantages:
+- Multi-Vt tuning on both sides, with about 500 mV of dual-sided threshold-voltage tunability shown in the deck.
+- Natural split-gate support because frontside and backside gate processes are already separated.
+- Dual-sided CMOS rather than a more constrained mono-CFET arrangement.
+- Lower aspect-ratio processing and self-aligned active formation, while leaving room for symmetric device and interconnect scaling.
 
-- Multi-Vt support and dual-sided threshold-voltage tunability.
-- A natural split-gate option in FFET, contrasted with the extra processing needed to realize split-gate behavior in CFET-style schemes.
-- Dual-sided CMOS support, with both NFET and PFET placement possible on frontside and backside.
-- More flexible and scalable design options than common-gate stacked approaches.
+The main tradeoff the deck acknowledges is thermal interaction between backside processing and already-built frontside devices. The proposed mitigation is a multi-flipping flow that defers some frontside gate and BEOL steps until after backside device formation.
 
 ## Why It Matters
 
-The strongest claim in the concluding slides is that this 300 mm wafer demonstration de-risks FFET as a candidate stacked-transistor platform. The technology is framed as promising because it combines:
-
-- Stacked active devices on both sides of the wafer.
-- Simpler Vt tunability.
-- Natural split-gate behavior.
-- Dual-sided CMOS design flexibility.
-- A path toward broader "Flip 3D" integration ideas beyond a single logic tier.
+The significance of the presentation is not just that backside devices can be built, but that they can be built on 300 mm wafers with process modules the authors argue are compatible with industrial practice. The closing slides frame FFET as a candidate path beyond current GAA and CFET scaling, and as a stepping stone toward broader "Flip 3D" integration concepts.
 
 ## Sources
-
-- [Original source](../raw/2026/0415/T10_T10-3 First Experimental Demonstration of Dual-sided NP FETs in Flip FET (FFET) on .pdf)
-- [Original source](<../raw/2026/0415/T10_T10-3 First Experimental Demonstration of Dual-sided NP FETs in Flip FET (FFET) on.pdf>)
-- [Original source](../raw/2026/0415/T10_T10-3%20First%20Experimental%20Demonstration%20of%20Dual-sided%20NP%20FETs%20in%20Flip%20FET%20(FFET)%20on.pdf)
+  
+- [Original source](../raw/2026/0415/T10_T10-3%20First%20Experimental%20Demonstration%20of%20Dual-sided%20NP%20FETs%20in%20Flip%20FET%20%28FFET%29%20on%20.pdf)

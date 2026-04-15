@@ -36,7 +36,7 @@ def main() -> None:
     args = parser.parse_args()
 
     repo = Path(args.repo).resolve()
-    skill_dir = Path(__file__).resolve().parent
+    skill_dir = Path(__file__).resolve().parent.parent
 
     results = run_workflow(
         repo=repo,
