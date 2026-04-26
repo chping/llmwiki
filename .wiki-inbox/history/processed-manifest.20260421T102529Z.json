@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "generated_by": "codex",
+  "processed_at": "2026-04-21T05:25:24Z",
+  "files": [
+    {
+      "inbox_path": "inbox/SRAM 的下一步？ SRAM 逻辑化的最新演进：Logic‑Bitcell（xBIT） 附各类 SRAM 架构对比表.md",
+      "wiki_pages": [
+        "wiki/logic-bitcell-xbit-sram.md"
+      ],
+      "source_size": 8496,
+      "source_mtime_ns": 1776763899979450067
+    },
+    {
+      "inbox_path": "inbox/当GPU不再是瓶颈：SRAM守不住了，ReRAM、MRAM、PCM正在接管AI.md",
+      "wiki_pages": [
+        "wiki/ai-memory-computing-beyond-sram.md"
+      ],
+      "source_size": 5695,
+      "source_mtime_ns": 1776762840946360069
+    },
+    {
+      "inbox_path": "inbox/混合键合（Hybrid Bonding）：开启三维异构集成新纪元的核心技术.md",
+      "wiki_pages": [
+        "wiki/hybrid-bonding-3d-integration.md"
+      ],
+      "source_size": 12006,
+      "source_mtime_ns": 1776763234371776575
+    }
+  ]
+}

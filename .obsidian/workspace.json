@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "e2906c215be89b8c",
+        "id": "67345ef966e65d5a",
         "type": "tabs",
         "children": [
           {
-            "id": "cb830e2e2576b7ea",
+            "id": "40d7aa3206ae7bf9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raw/2026/0415/光刻机FinFET存储器进行设计，测试验证分析.md",
+                "file": "wiki/ai-memory-computing-beyond-sram.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "光刻机FinFET存储器进行设计，测试验证分析"
+              "title": "ai-memory-computing-beyond-sram"
             }
           }
         ]
@@ -183,25 +183,34 @@
       "bases:Create new base": false
     }
   },
-  "active": "cb830e2e2576b7ea",
+  "active": "40d7aa3206ae7bf9",
   "lastOpenFiles": [
+    "inbox/FFET工艺特点及对SRAM设计影响表格汇总.md",
+    "wiki/3d-sram-reliability-performance.md",
+    "wiki/index.md",
+    "inbox/06026429.pdf",
+    "Untitled.canvas",
+    "raw/2026/0421/SRAM 的下一步？ SRAM 逻辑化的最新演进：Logic‑Bitcell（xBIT） 附各类 SRAM 架构对比表.md",
+    "wiki/logic-bitcell-xbit-sram.md",
+    "inbox/SRAM 的下一步？ SRAM 逻辑化的最新演进：Logic‑Bitcell（xBIT） 附各类 SRAM 架构对比表 1.md",
+    "inbox/SRAM 的下一步？ SRAM 逻辑化的最新演进：Logic‑Bitcell（xBIT） 附各类 SRAM 架构对比表.md",
+    "inbox/混合键合（Hybrid Bonding）：开启三维异构集成新纪元的核心技术.md",
+    "inbox/assets/Image 6.webp",
+    "inbox/assets/Image 5.webp",
+    "inbox/assets/Image 4.webp",
+    "inbox/assets/Image 3.webp",
+    "inbox/assets/Image 2.webp",
+    "inbox/assets/Image 1.webp",
+    "inbox/当GPU不再是瓶颈：SRAM守不住了，ReRAM、MRAM、PCM正在接管AI.md",
+    "inbox/assets/Image.webp",
+    "inbox/assets",
+    "raw/2026/0415/光刻机FinFET存储器进行设计，测试验证分析.md",
     "raw/2026/0415/assets/1251718-20230918045047524-363007327.png",
     "raw/2026/0415/assets/1251718-20230918045016133-585371828.png",
     "raw/2026/0415/assets/1251718-20230918044942506-1928930626.png",
-    "raw/2026/0415/assets/1251718-20230918044926206-736355650.png",
-    "raw/2026/0415/assets/1251718-20230918044824655-190063185.png",
-    "raw/2026/0415/assets/1251718-20230918044754080-1409932838.png",
-    "raw/2026/0415/assets/1251718-20230918044713540-825677600.png",
-    "raw/2026/0415/assets/1251718-20230918044628256-1386683396.png",
-    "raw/2026/0415/assets/1251718-20230918044556490-207504273.png",
-    "raw/2026/0415/assets/1251718-20230918044521115-714194383.png",
-    "raw/2026/0415/assets/1251718-20230918044445474-95523126.png",
     "raw/2026/0415/assets",
     "wiki/finfet-memory-test-and-repair.md",
-    "raw/2026/0415/光刻机FinFET存储器进行设计，测试验证分析.md",
-    "raw/2026/0415/光刻机FinFET存储器进行设计，测试验证分析.md",
     "wiki/flip-fet-stacked-transistor-scaling.md",
-    "wiki/index.md",
     "raw/2026/0415/T10_T10-3 First Experimental Demonstration of Dual-sided NP FETs in Flip FET (FFET) on .pdf",
     "inbox/T10_T10-3 First Experimental Demonstration of Dual-sided NP FETs in Flip FET (FFET) on .pdf",
     "inbox",
@@ -212,8 +221,6 @@
     "raw/inbox/T10_T10-3 First Experimental Demonstration of Dual-sided NP FETs in Flip FET (FFET) on .pdf",
     "skills/ingest/codex_run_template.txt",
     "skills/ingest/utils.py",
-    "skills/ingest/models.py",
-    "skills/ingest/paths.py",
     "skills/ingest/AGENTS-snippet.md",
     "skills/ingest/README.md",
     "skills/ingest/SKILL.md"

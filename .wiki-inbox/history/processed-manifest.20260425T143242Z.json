@@ -1,0 +1,71 @@
+{
+  "version": 2,
+  "generated_by": "codex",
+  "processed_at": "2026-04-25T14:30:14Z",
+  "files": [
+    {
+      "inbox_path": "inbox/T10_T10-3 First Experimental Demonstration of Dual-sided NP FETs in Flip FET (FFET) on .pdf",
+      "wiki_pages": [
+        "wiki/flip-fet-stacked-transistor-scaling.md"
+      ],
+      "source_size": 3917696,
+      "source_mtime_ns": 1775530341720001500
+    },
+    {
+      "inbox_path": "inbox/assets/Image 1.webp",
+      "wiki_pages": [
+        "wiki/hybrid-bonding-3d-integration.md"
+      ],
+      "source_size": 45270,
+      "source_mtime_ns": 1776763233891781799
+    },
+    {
+      "inbox_path": "inbox/assets/Image 2.webp",
+      "wiki_pages": [
+        "wiki/hybrid-bonding-3d-integration.md"
+      ],
+      "source_size": 31604,
+      "source_mtime_ns": 1776763233986025189
+    },
+    {
+      "inbox_path": "inbox/assets/Image 3.webp",
+      "wiki_pages": [
+        "wiki/hybrid-bonding-3d-integration.md"
+      ],
+      "source_size": 33484,
+      "source_mtime_ns": 1776763234070930790
+    },
+    {
+      "inbox_path": "inbox/assets/Image 4.webp",
+      "wiki_pages": [
+        "wiki/hybrid-bonding-3d-integration.md"
+      ],
+      "source_size": 38520,
+      "source_mtime_ns": 1776763234158500985
+    },
+    {
+      "inbox_path": "inbox/assets/Image 5.webp",
+      "wiki_pages": [
+        "wiki/hybrid-bonding-3d-integration.md"
+      ],
+      "source_size": 25288,
+      "source_mtime_ns": 1776763234237542437
+    },
+    {
+      "inbox_path": "inbox/assets/Image 6.webp",
+      "wiki_pages": [
+        "wiki/hybrid-bonding-3d-integration.md"
+      ],
+      "source_size": 40664,
+      "source_mtime_ns": 1776763234324115295
+    },
+    {
+      "inbox_path": "inbox/assets/Image.webp",
+      "wiki_pages": [
+        "wiki/ai-memory-computing-beyond-sram.md"
+      ],
+      "source_size": 74160,
+      "source_mtime_ns": 1776762840885798694
+    }
+  ]
+}

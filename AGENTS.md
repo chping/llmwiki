@@ -1,62 +1,217 @@
 # Repository Guidelines
 
-## Project Structure & Module Organization
-This repository is a lightweight Markdown wiki. Keep source material in `raw/`, using `inbox/` for unprocessed notes and dated folders in the format `raw/YYYY/MMDD/` for archived processed inputs. Publish curated content in `wiki/`. The current entry points are `wiki/index.md` for navigation and `wiki/log.md` for the running project log. Add new topic pages under `wiki/` and link them from `wiki/index.md`.
+Use repository skills under `.agents/skills/` and command-line tools under `tools/` whenever they match the task.
 
-## Build, Test, and Development Commands
-There is no build system or test runner configured yet. Day-to-day work is file-based:
+## Project Overview
 
-- `ls wiki raw` to inspect the current content layout.
-- `sed -n '1,120p' wiki/index.md` to review an existing page from the terminal.
-- `rg "keyword" wiki raw` %% to %% find topics, notes, or source references quickly.
+This repository is a personal research knowledge base organized as a Markdown wiki.
 
-If tooling is added later, document the exact commands here and keep them runnable from the repository root.
+The agent must:
+- Ingest raw materials
+- Structure knowledge into Markdown pages
+- Maintain consistency, traceability, and quality
 
-## Inbox Processing Workflow
-Use the standard inbox-processing workflow to process `inbox/`.
+## Directory Structure
 
-This repository provides a repo-local Codex skill for inbox processing:
+### inbox/
+Contains all unprocessed files and materials.
 
-- `.agents/skills/ingest/`
+### raw/
+Stores original source materials after ingestion.
 
-For deterministic local execution, run:
+- Files must be organized by date:  
+  raw/YYYY/MMDD/
 
-```bash
-python3 .agents/skills/ingest/scripts/cli.py --repo .
+- Rules:
+  - Files in raw/ are immutable reference sources
+  - Once placed in raw/, files must NOT be:
+    - modified
+    - renamed
+    - deleted
+    - overwritten
+
+### wiki/
+Primary working directory for structured knowledge.
+
+Contains:
+- processed, summarized, and synthesized content
+- Markdown files only
+
+Key files:
+- wiki/index.md → entry point and knowledge index
+- wiki/log.md → operation log
+- wiki/template.md → global template
+
+### Template Override
+
+- If a subdirectory contains template.md (e.g. wiki/topics/template.md)
+- That template overrides the global template
+- Applies recursively to all subdirectories
+
+### tools/
+Command-line tools available for use
+
+### .obsidian/
+Private Obsidian metadata directory  
+→ MUST NOT be modified or deleted
+
+### .trash/
+Temporary storage for deleted files
+
+## File Organization Rules
+
+### Topics / Concepts / Entities
+
+- wiki/topics/ → research topics
+- wiki/concepts/ → definitions, theorems, laws, terminology
+- wiki/entities/ → people, tools, products, companies
+
+Rules:
+- One Markdown file per item
+- File names must be lowercase with hyphens
+  - example: model-comparison.md
+
+## YAML Frontmatter (Mandatory)
+
+Every Markdown file must include:
+
+```yaml
+---
+title: Title of this page
+type: source | concept | entity | comparison | synthesis
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [tag1, tag2]
+sources: ['raw/YYYY/MMDD/file.ext']
+---
 ```
-For Codex-driven execution, prefer the repo-local skill workflow by asking Codex to use the ingest skill when processing inbox files.
+- If a local template exists → follow that template instead
+- Missing or incorrect frontmatter is NOT allowed
 
-This workflow:
-- uses Codex to analyze inbox files and update wiki pages,
-- requires wiki pages to include ## Sources backlinks to inbox/...,
-- requires Codex to write .wiki-inbox/processed-manifest.json,
-- archives processed files into raw/YYYY/MMDD/,
-- rewrites wiki backlinks to the archive paths,
-- records archive actions in wiki/log.md,
-- stores manifest history under .wiki-inbox/history/.
+## Writing Rules
 
-The default Codex command template is stored in:
-- .agents/skills/ingest/references/codex_run_template.txt
+- All content MUST be written in Chinese
+- Technical terms:
+    - Use standard Chinese translations when available
+    - Otherwise keep English terms
 
-Do not manually move files out of inbox/ before the archive step succeeds.
+Style:
 
-## Coding Style & Naming Conventions
-Write content in Markdown with clear heading hierarchy and short paragraphs. Prefer fenced code blocks for commands and examples. Use descriptive, lowercase file names with hyphens for multiword pages, for example `wiki/model-comparison.md`. Keep log entries chronological under dated headings such as `## 2026-04-15`. Use relative links between wiki pages where possible.
+- Clear heading hierarchy
+- Short paragraphs
+- Use Markdown formatting properly
+- Use code blocks for commands and examples
 
-## Testing Guidelines
-Quality checks are manual at this stage. Before submitting changes, verify that:
 
-- Markdown headings are ordered correctly.
-- Internal links point to existing files.
-- New pages are linked from `wiki/index.md` when they should be discoverable.
-- Significant updates are recorded in `wiki/log.md`.
+## Cross-linking Rules
 
-When automated linting or link checking is introduced, add the command here and run it before review.
+= Use [[wikilink]] between pages
+- When referencing:
+    - existing concepts/entities → MUST link
+    - frequently used concepts without pages → MUST create page
 
-## Commit & Pull Request Guidelines
-This workspace does not currently include Git history, so no established commit convention can be inferred. Use short, imperative commit subjects such as `Add retrieval notes page` or `Update project log`. Keep each commit focused on one content change. Pull requests should include a brief summary, the files changed, and any follow-up pages or links contributors should add.
+## Knowledge Write-back Rules
 
-## Contributor Workflow
-Start with source notes in `inbox/`, distill them into topic pages in `wiki/`, update `wiki/index.md` and `wiki/log.md`, then archive processed source files into `raw/YYYY/MMDD/` using the standard inbox-processing workflow.
+After each user interaction:
 
-When using Codex inside this repository, prefer the repo-local skill under `.agents/skills/ingest/` instead of ad hoc manual inbox processing.
+- Evaluate whether new knowledge should be persisted
+- If YES:
+    - Create a new page (type: synthesis)
+    - Update wiki/index.md
+    - Append entry to wiki/log.md
+
+## Update Strategy
+
+- If modifying >10 pages:
+    - list changes and request user confirmation
+- Uncertain content:
+    - mark with [!needs-verification]
+- Conflicting content:
+    - mark with [!contradiction] and explain sources
+
+## Human Review Rules
+
+If confidence is low:
+
+- Add in frontmatter:
+    `status: needs-review`
+
+For data or conclusions:
+
+- Mark with [!needs-verification]
+
+
+## Markdown Quality Enforcement
+
+After ANY modification in wiki/:
+
+1. Run lint:
+    npx markdownlint wiki/
+2. Fix automatically:
+    npx markdownlint wiki/ –fix
+3. Manually fix remaining issues
+
+Rules:
+
+- Lint errors are BLOCKING
+- Do not finalize changes if lint fails
+
+## Ingest Workflow (Critical)
+
+When processing inbox files:
+
+1. Create target directory:
+    raw/YYYY/MMDD/
+2. Move or copy files from inbox/ → raw/YYYY/MMDD/
+3. This movement:
+    - DOES NOT require deletion approval
+    - IS considered part of ingestion
+4. After ingestion:
+    - Files in raw/ become immutable
+
+## Allowed Actions
+
+- Create / modify files in wiki/
+- Create subdirectories in wiki/
+- Create dated directories in raw/
+- Move/copy files from inbox/ → raw/
+
+## Restricted Actions
+
+Require explicit user approval:
+- Deleting ANY file or directory (except ingest move from inbox)
+
+## Strictly Prohibited Actions
+
+- Modify ANY file inside raw/
+- Rename files inside raw/
+- Delete files inside raw_
+- Overwrite existing raw files
+- Modify .obsidian/
+
+## Completion Criteria
+
+A task is considered complete ONLY IF:
+
+- Markdown content is created/updated
+- Links are valid
+- index.md updated (if needed)
+- log.md updated
+- markdownlint passes with zero errors
+
+## Agent States
+
+- RAW (in inbox/)
+- INGESTED (in raw/)
+- PROCESSED (in wiki/)
+- VERIFIED (reviewed)
+
+Agent must ensure correct transitions.
+
+## Failure Handling
+
+If a step fails:
+
+- Do not continue blindly
+- Report failure clearly
+- Suggest next action

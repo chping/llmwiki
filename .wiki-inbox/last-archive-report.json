@@ -1,22 +1,22 @@
 {
   "version": 5,
-  "generated_at": "2026-04-15T15:34:08.196809+00:00",
+  "generated_at": "2026-04-25T15:08:59.092228+00:00",
   "dry_run": false,
-  "archive_dir": "raw/2026/0415",
+  "archive_dir": "raw/2026/0425",
   "manifest": ".wiki-inbox/processed-manifest.json",
   "entries_count": 1,
   "results": [
     {
-      "inbox_path": "inbox/光刻机FinFET存储器进行设计，测试验证分析.md",
-      "archive_path": "raw/2026/0415/光刻机FinFET存储器进行设计，测试验证分析.md",
+      "inbox_path": "inbox/FFET工艺特点及对SRAM设计影响表格汇总.md",
+      "archive_path": "raw/2026/0425/FFET工艺特点及对SRAM设计影响表格汇总.md",
       "wiki_pages": [
-        "wiki/finfet-memory-test-and-repair.md"
+        "wiki/ffet-sram-design-considerations.md"
       ],
       "fingerprint_origin": "inbox",
-      "sha256": "9a87d81cc032f2c551604c2c2c8fd7447599759003ae004e78a0a058bfff855a",
+      "sha256": "8d5c2acedb1cd37f667e5af60f199e03f93c75c8e94333c07fc283fbae0bac91",
       "moved": true,
       "rewritten_pages": [
-        "wiki/finfet-memory-test-and-repair.md"
+        "wiki/ffet-sram-design-considerations.md"
       ],
       "already_archived": false
     }
