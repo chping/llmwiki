@@ -68,7 +68,7 @@ Temporary storage for deleted files
 
 Rules:
 - One Markdown file per item
-- File names must be lowercase with hyphens
+- Markdown file names must be lowercase with hyphens.
   - example: model-comparison.md
 
 ## YAML Frontmatter (Mandatory)
@@ -92,8 +92,8 @@ sources: ['raw/YYYY/MMDD/file.ext']
 
 - All content MUST be written in Chinese
 - Technical terms:
-    - Use standard Chinese translations when available
-    - Otherwise keep English terms
+  - Use standard Chinese translations when available
+  - Otherwise keep English terms
 
 Style:
 
@@ -105,10 +105,10 @@ Style:
 
 ## Cross-linking Rules
 
-= Use [[wikilink]] between pages
+- Use [[wikilink]] between pages
 - When referencing:
-    - existing concepts/entities → MUST link
-    - frequently used concepts without pages → MUST create page
+  - existing concepts/entities → MUST link
+  - frequently used concepts without pages → MUST create page
 
 ## Knowledge Write-back Rules
 
@@ -116,28 +116,25 @@ After each user interaction:
 
 - Evaluate whether new knowledge should be persisted
 - If YES:
-    - Create a new page (type: synthesis)
-    - Update wiki/index.md
-    - Append entry to wiki/log.md
+  - Create a new page (type: synthesis)
+  - Update wiki/index.md
+  - Append entry to wiki/log.md
 
 ## Update Strategy
 
 - If modifying >10 pages:
-    - list changes and request user confirmation
+  - list changes and request user confirmation
 - Uncertain content:
-    - mark with [!needs-verification]
+  - mark with [!needs-verification]
 - Conflicting content:
-    - mark with [!contradiction] and explain sources
+  - mark with [!contradiction] and explain sources
 
 ## Human Review Rules
 
 If confidence is low:
-
-- Add in frontmatter:
-    `status: needs-review`
+- Add in frontmatter:`status: needs-review`
 
 For data or conclusions:
-
 - Mark with [!needs-verification]
 
 
@@ -145,36 +142,20 @@ For data or conclusions:
 
 After ANY modification in wiki/:
 
-1. Run lint:
-    npx markdownlint wiki/
-2. Fix automatically:
-    npx markdownlint wiki/ –fix
+1. Run lint: `npx markdownlint wiki/`
+2. Fix automatically: `npx markdownlint wiki/ --fix`
 3. Manually fix remaining issues
 
 Rules:
-
 - Lint errors are BLOCKING
 - Do not finalize changes if lint fails
-
-## Ingest Workflow (Critical)
-
-When processing inbox files:
-
-1. Create target directory:
-    raw/YYYY/MMDD/
-2. Move or copy files from inbox/ → raw/YYYY/MMDD/
-3. This movement:
-    - DOES NOT require deletion approval
-    - IS considered part of ingestion
-4. After ingestion:
-    - Files in raw/ become immutable
 
 ## Allowed Actions
 
 - Create / modify files in wiki/
 - Create subdirectories in wiki/
 - Create dated directories in raw/
-- Move/copy files from inbox/ → raw/
+- Move/copy files from inbox/ to raw/
 
 ## Restricted Actions
 
@@ -185,7 +166,7 @@ Require explicit user approval:
 
 - Modify ANY file inside raw/
 - Rename files inside raw/
-- Delete files inside raw_
+- Delete files inside raw/
 - Overwrite existing raw files
 - Modify .obsidian/
 
@@ -193,9 +174,8 @@ Require explicit user approval:
 
 A task is considered complete ONLY IF:
 
-- Markdown content is created/updated
+- wiki/index.md is updated when new pages are created or renamed
 - Links are valid
-- index.md updated (if needed)
 - log.md updated
 - markdownlint passes with zero errors
 
@@ -208,10 +188,63 @@ A task is considered complete ONLY IF:
 
 Agent must ensure correct transitions.
 
+## State Transitions
+
+- inbox → raw → wiki must follow: RAW → INGESTED → PROCESSED
+- Pages with status: needs-review are NOT VERIFIED
+
 ## Failure Handling
 
-If a step fails:
+If any step fails:
 
-- Do not continue blindly
-- Report failure clearly
-- Suggest next action
+- Stop execution immediately
+- Report the exact failing command
+- Do NOT proceed to subsequent steps
+
+## Full Ingest Workflow
+
+When the user asks to ingest, archive, import, or process files from `inbox/`, the full ingest workflow MUST be used whenever possible. The agent MUST NOT manually reproduce these steps if `tools/kb.py` is available.
+
+Run:
+
+```bash
+python tools/kb.py ingest inbox/<file-or-dir>
+```
+
+This single command must complete the whole workflow:
+
+1. Move or copy files from `inbox/` to `raw/YYYY/MMDD/`.
+2. Create the corresponding Markdown page under `wiki/`.
+3. Add required YAML frontmatter.
+4. Update `wiki/index.md`.
+5. Validate wikilinks.
+6. Run markdownlint auto-fix and final lint check.
+7. Append operation records to `wiki/log.md`.
+
+Do not use the lower-level tools separately unless the user explicitly asks for a partial operation.
+
+The lower-level tools remain available for debugging or targeted maintenance:
+
+```bash
+python tools/kb_ingest.py ...
+python tools/kb_write_page.py ...
+python tools/kb_sync_index.py
+python tools/kb_link_check.py
+python tools/kb_lint_fix.py
+python tools/kb_log_update.py ...
+python tools/kb_done_check.py
+```
+Moving files from inbox/ to raw/ as part of ingest is NOT considered deletion.
+
+Ignore .DS_Store files
+
+## Tool Usage Priority
+
+- Prefer `tools/kb.py` over all other tools
+- Use lower-level tools ONLY when explicitly required
+
+## Idempotency
+
+- Do not recreate pages if they already exist
+- Do not duplicate log entries
+- Avoid redundant writes

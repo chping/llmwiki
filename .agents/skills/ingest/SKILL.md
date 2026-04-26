@@ -1,27 +1,28 @@
 ---
-name: ingest
-description: Process files in raw/inbox for this repository. Use this when the task is to analyze inbox notes, update wiki pages, add source backlinks, generate a processed manifest, and archive processed files into raw/YYYY/MMDD/.
+name: kb-ingest
+description: Use when processing files from inbox into raw/YYYY/MMDD and recording the ingestion in the wiki log.
 ---
 
-# Wiki Inbox Ingest
+# Knowledge Base Ingest Skill
 
-Use this skill only for this repository's inbox-to-wiki workflow.
+Use this skill when the user asks to ingest, archive, import, process, or move materials from `inbox/`.
 
-## What this skill does
-- Analyze files in `raw/inbox/`
-- Create or update curated wiki pages in `wiki/`
-- Add `## Sources` backlinks to original files
-- Update `wiki/index.md` and `wiki/log.md`
-- Generate `.wiki-inbox/processed-manifest.json`
-- Archive processed files into `raw/YYYY/MMDD/`
-- Rewrite wiki backlinks to the archived paths
+Follow this workflow:
 
-## Required workflow
-1. Review `AGENTS.md`.
-2. Read `references/codex_prompt_template.md` for the content-generation contract.
-3. Use the Python scripts in `scripts/` for deterministic execution.
-4. Do not manually move files from `raw/inbox/` unless the workflow requires it.
-5. Prefer running:
+1. Inspect the file names in `inbox/`.
+2. Move or copy selected files into `raw/YYYY/MMDD/` using:
 
 ```bash
-python3 .agents/skills/ingest/scripts/cli.py --repo .
+python3 tools/ingest.py inbox/<file-or-dir>
+```
+
+Use `--copy` only when the source must remain in `inbox/`.
+
+3. Treat files under `raw/` as immutable after ingestion.
+4. Do not overwrite existing files in `raw/`.
+5. Continue by creating or updating `wiki/` pages if requested.
+6. Run completion checks before finalizing:
+
+```bash
+python3 tools/done_check.py
+```

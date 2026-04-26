@@ -1,1 +1,0 @@
-{codex_cmd} exec --cd "{repo}" -
