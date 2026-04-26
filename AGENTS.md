@@ -2,6 +2,32 @@
 
 Use repository skills under `.agents/skills/` and command-line tools under `tools/` whenever they match the task.
 
+## Global Constraints (Highest Priority)
+
+### User Notes Protection Rules (Global Constraint)
+
+All agents, skills, and automated workflows MUST preserve the following protected block when creating or updating any Markdown file:
+
+```markdown
+<!-- user-notes:start -->
+...
+<!-- user-notes:end -->
+```
+Rules:
+- The content inside this block MUST NOT be modified, deleted, or reordered under any circumstances
+- The block itself MUST NOT be removed or relocated
+- When updating a file, the agent MUST:
+  - Extract and preserve the entire block before making any changes
+  - Restore the block exactly as-is after the update
+- Violation of this rule is considered a critical error.
+
+### Markdown Formatting Rules (Global Constraint)
+
+- Do NOT insert artificial line breaks in paragraphs
+- Do NOT wrap lines based on length
+- Each paragraph MUST be written as a single continuous line
+- Line wrapping based on column width (e.g. 80/100 chars) is strictly forbidden
+
 ## Project Overview
 
 This repository is a personal research knowledge base organized as a Markdown wiki.
@@ -70,16 +96,10 @@ Temporary storage for deleted files.
 
 ### Pages / Topics / Concepts / Entities
 
-- `wiki/pages/`:     Archived source pages. Each Markdown file corresponds to a source file with the same name that has been archived in the raw/ directory, and is used to record the summary, key points, and essential content extraction of that source file.
+- `wiki/pages/`: Archived source pages. Each Markdown file corresponds to a source file with the same name that has been archived in the raw/ directory, and is used to record the summary, key points, and essential content extraction of that source file.
 - `wiki/topics/`: research topics
 - `wiki/concepts/`: definitions, theorems, laws, terminology
 - `wiki/entities/`: people, tools, products, companies
-
-Rules:
-
-- Create one Markdown file per item.
-- Markdown file names must be lowercase with hyphens.
-- Example: `wiki/topics/model-comparison.md`
 
 ## YAML Frontmatter
 
@@ -89,7 +109,6 @@ Default frontmatter:
 
 ```yaml
 ---
-title: Title of this page
 type: source | concept | entity 
 created: YYYY-MM-DD
 updated: YYYY-MM-DD

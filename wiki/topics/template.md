@@ -1,5 +1,4 @@
 ---
-title: {{topic_name}}
 type: topic
 created: {{date}}
 updated: {{date}}
@@ -9,7 +8,7 @@ related_concepts: []
 related_entities: []
 ---
 
-# {{topic_name}}
+# [[{topic_name}]]
 
 ## 1. 主题概述（Overview）
 

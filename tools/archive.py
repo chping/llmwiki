@@ -76,7 +76,7 @@ def archive(target_dir: Path) -> list[dict[str, str]]:
     day_dir = now.strftime("%m_%d")
 
     raw_dir = project_root / "raw" / year_dir / day_dir
-    pages_dir = project_root / "pages" / year_dir / day_dir
+    pages_dir = project_root / "wiki" / "pages" / year_dir / day_dir
 
     raw_dir.mkdir(parents=True, exist_ok=True)
     pages_dir.mkdir(parents=True, exist_ok=True)

@@ -16,8 +16,8 @@ def main() -> None:
         print("npx is not available. Install Node.js/npm before running markdownlint.", file=sys.stderr)
         raise SystemExit(127)
 
-    fix_rc = run(["npx", "markdownlint", "wiki/", "--fix"])
-    check_rc = run(["npx", "markdownlint", "wiki/"])
+    fix_rc = run(["npx", "markdownlint", "wiki/", "--disable MD013","--fix"])
+    check_rc = run(["npx", "markdownlint", "wiki/","--disable MD013"])
 
     if fix_rc != 0 or check_rc != 0:
         raise SystemExit(check_rc or fix_rc)

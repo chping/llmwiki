@@ -1,5 +1,4 @@
 ---
-title: {{concept_name}}
 type: concept
 created: {{date}}
 updated: {{date}}
@@ -8,7 +7,7 @@ related_topics: []
 related_pages: []
 ---
 
-# {{concept_name}}
+# [[{concept_name}]]
 
 ## 1. 定义（Definition）
 

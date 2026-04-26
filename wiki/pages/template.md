@@ -1,19 +1,21 @@
 ---
-title: {{file_name}}
 type: page
 source: raw/{{YYYY}}/{{MM_DD}}/{{file_name_with_ext}}
-created: {{date}}
-updated: {{date}}
+created:
+  "{ date }":
+updated:
+  "{ date }":
 tags: []
 topics: []
 concepts: []
 entities: []
 ---
 
-# {{file_name}}
+# [[{title}]]
 
 ## 1. 文件信息（Metadata）
 
+- 文章标题：{{title}}
 - 原始文件路径：`raw/.../{{file_name_with_ext}}`
 - 文件类型：PDF / Markdown / Note / Other
 - 来源：{{来源，如论文 / 文档 / 手册}}

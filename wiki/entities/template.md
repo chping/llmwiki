@@ -1,5 +1,4 @@
 ---
-title: {{entity_name}}
 type: entity
 created: {{date}}
 updated: {{date}}
@@ -9,7 +8,7 @@ related_topics: []
 related_pages: []
 ---
 
-# {{entity_name}}
+# [[{entity_name}]]
 
 ## 1. 基本信息（Basic Info）
 
