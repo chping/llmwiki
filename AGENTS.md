@@ -68,8 +68,9 @@ Temporary storage for deleted files.
 
 ## File Organization Rules
 
-### Topics / Concepts / Entities
+### Pages / Topics / Concepts / Entities
 
+- `wiki/pages/`:     Archived source pages. Each Markdown file corresponds to a source file with the same name that has been archived in the raw/ directory, and is used to record the summary, key points, and essential content extraction of that source file.
 - `wiki/topics/`: research topics
 - `wiki/concepts/`: definitions, theorems, laws, terminology
 - `wiki/entities/`: people, tools, products, companies
