@@ -59,7 +59,7 @@ description: Analyze raw source files and update knowledge-base pages.
 
 写入前必须执行去重检查。
 
-#### 4.1 链接去重
+#### 4.1. 链接去重
 - 以下字段和列表中的链接必须去重：
   - related_pages
   - related_topics
@@ -72,19 +72,29 @@ description: Analyze raw source files and update knowledge-base pages.
  - 大小写、路径形式不同但指向同一页面的链接，应视为重复
  - 保持原有顺序，新增项追加到末尾
 
-#### 4.2 内容块去重
+#### 4.2. 内容块去重
 - 对于 source block：
   - 同一个 <!-- source: ... --> 块只能出现一次
   - 如果重复出现，保留最新分析生成的块
   - 删除旧的重复块
 
-#### 4.3 标题去重
+#### 4.3. 标题去重
  - 同一级别下不得创建重复标题。
  - 如果目标章节已存在：
  - 更新该章节内容
  - 不新增同名章节
 
-### 5. 禁止行为
+### 5. Markdown格式约束
+生成 Markdown 内容时：
+- 所有段落必须为单行（no line wrapping）
+- 不允许将一句话拆成多行
+- 不允许在句中插入换行符
+- 仅在以下情况允许换行：
+  - 标题
+  - 列表
+  - 代码块
+
+### 6. 禁止行为
 - 禁止向同一 topic / concept / entity 页面反复追加相同内容
 - 禁止整体覆盖 topics / concepts / entities 页面
 - 禁止删除其他 source 贡献的内容
