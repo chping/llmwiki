@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "85d7dab17cb6ceaf",
+    "id": "4e5e4001a8189118",
     "type": "split",
     "children": [
       {
-        "id": "ce2e632262c1d597",
+        "id": "a7b874215760ac3b",
         "type": "tabs",
         "children": [
           {
-            "id": "955ef34be1ec6797",
+            "id": "2143288ec8837baf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/pages/2026/04_26/First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects.md",
-                "mode": "source",
+                "file": "wiki/papers/zang_2025_dawn.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects"
+              "title": "zang_2025_dawn"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "6faa61c60e9d9f7d",
+    "id": "487fb0e992311968",
     "type": "split",
     "children": [
       {
-        "id": "ea5eb0355d38b917",
+        "id": "fcd73d0037740112",
         "type": "tabs",
         "children": [
           {
-            "id": "d1552533386d62bd",
+            "id": "578fb55abddcb7ba",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "02796972b19b1ea2",
+            "id": "206b20eee4725311",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "e6fec32acfc98a7d",
+            "id": "871130a68a29b5e4",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,20 +81,20 @@
     "width": 300
   },
   "right": {
-    "id": "8ffe3df297c10507",
+    "id": "998d1991a04fd9de",
     "type": "split",
     "children": [
       {
-        "id": "97d2b7bbd9406de5",
+        "id": "2b2262fb70321e78",
         "type": "tabs",
         "children": [
           {
-            "id": "68b3a2c45c0fea24",
+            "id": "d67db03da64884ef",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "skills/ingest/codex_prompt_template.md",
+                "file": "wiki/papers/zang_2025_dawn.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for codex_prompt_template"
+              "title": "Backlinks for zang_2025_dawn"
             }
           },
           {
-            "id": "9c662ddb9005a03e",
+            "id": "db871c8a15770f53",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "skills/ingest/codex_prompt_template.md",
+                "file": "wiki/papers/zang_2025_dawn.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from codex_prompt_template"
+              "title": "Outgoing links from zang_2025_dawn"
             }
           },
           {
-            "id": "b51bc61b606fe877",
+            "id": "3c4a87226901d1b4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,7 +137,7 @@
             }
           },
           {
-            "id": "f00f081d46867c50",
+            "id": "3f7a225b410ee82a",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -151,18 +151,18 @@
             }
           },
           {
-            "id": "57f6d1257e193f27",
+            "id": "0402ede3a2d7ca7b",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "skills/ingest/codex_prompt_template.md",
+                "file": "wiki/papers/zang_2025_dawn.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of codex_prompt_template"
+              "title": "Outline of zang_2025_dawn"
             }
           }
         ]
@@ -183,54 +183,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "955ef34be1ec6797",
+  "active": "2143288ec8837baf",
   "lastOpenFiles": [
-    "wiki/pages/2026/04_26/Overlay-aware_variation_study_of_flip_FET_and_benchmark_with_CFET.md",
-    "wiki/pages/2026/04_26/from-flip-fet-to-flip-3d-integration-f3d-maximizing-the-scaling-potential-of-wafer-both-sides-beyond-conventional-3d-integration.md",
-    "wiki/pages/template.md",
+    "wiki/logs/2026-06.md",
+    "wiki/logs/2026_06.md",
     "wiki/index.md",
-    "pages/2026/04_26/From_Flip_FET_to_Flip_3D_Integration_F3D_Maximizing_the_Scaling_Potential_of_Wafer_Both_Sides_Beyond_Conventional_3D_Integration.md",
-    "wiki/entities/peking-university.md",
-    "wiki/topics/vfet-logic-scaling.md",
-    "wiki/topics/flip-3d-integration.md",
-    "wiki/topics/ffet-sram-design.md",
-    "wiki/topics/3d-sram.md",
-    "wiki/entities/openram.md",
-    "wiki/concepts/ffet.md",
-    "wiki/concepts/cfet.md",
-    "inbox/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective.pdf",
-    "inbox/First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects.pdf",
-    "inbox/From_Flip_FET_to_Flip_3D_Integration_F3D_Maximizing_the_Scaling_Potential_of_Wafer_Both_Sides_Beyond_Conventional_3D_Integration.pdf",
-    "inbox/Overlay-aware variation study of flip FET and benchmark with CFET.pdf",
-    "inbox/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors.pdf",
-    "inbox/Process_Development_and_Optimization_of_Flip_FET_FFET_for_Stacked_Transistors_Technology.pdf",
-    "raw/2026/04_26/3D_SRAM_Design_amp_Optimization_with_Open_Source_Memory_Compiler.pdf",
-    "raw/2026/04_26/FFET工艺特点及对SRAM设计影响表格汇总.md",
-    "README.md",
-    "AGENTS.md",
-    "wiki/topics/template.md",
-    "wiki/entities/template.md",
-    "wiki/entities/freepdk3d45.md",
-    "wiki/concepts/dtco.md",
-    "inbox/FFET工艺特点及对SRAM设计影响表格汇总.md",
-    "wiki/log.md",
-    "wiki/sources/3d-sram-design-amp-optimization-with-open-source-memory-compiler.md",
-    "wiki/concepts/3d-sram.md",
-    "wiki/concepts/openram.md",
-    "inbox/3D_SRAM_Design_amp_Optimization_with_Open_Source_Memory_Compiler.pdf",
-    "wiki/sources/cfet-sram-dtco-interconnect-guideline-and-benchmark-for-cmos-scaling.md",
-    "inbox/CFET_SRAM_DTCO_Interconnect_Guideline_and_Benchmark_for_CMOS_Scaling.pdf",
-    "inbox/06026429.pdf",
-    "Untitled.canvas",
-    "inbox/assets/Image 6.webp",
-    "inbox/assets/Image 5.webp",
-    "inbox/assets/Image 4.webp",
-    "inbox/assets/Image 3.webp",
-    "inbox/assets/Image 2.webp",
-    "inbox/assets/Image 1.webp",
-    "inbox/assets/Image.webp",
-    "raw/2026/0415/assets/1251718-20230918045047524-363007327.png",
-    "raw/2026/0415/assets/1251718-20230918045016133-585371828.png",
-    "raw/2026/0415/assets/1251718-20230918044942506-1928930626.png"
+    "wiki/papers/template.md"
   ]
 }
