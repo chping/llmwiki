@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/papers/bie_2026_xunlian.md",
+                "file": "wiki/papers/zang_2025_dawn.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "bie_2026_xunlian"
+              "title": "zang_2025_dawn"
             }
           }
         ]
@@ -185,11 +185,49 @@
   },
   "active": "2143288ec8837baf",
   "lastOpenFiles": [
-    "wiki/logs/2026-06.md",
-    "wiki/index.md",
-    "README.md",
-    "wiki/papers/zang_2025_dawn.md",
-    "wiki/logs/2026_06.md",
-    "wiki/papers/template.md"
+    "site/public/tags/系统级优化.html",
+    "site/public/tags/stco.html",
+    "site/public/tags/risc-v.html",
+    "site/public/tags/rtl.html",
+    "site/public/tags/verilog.html",
+    "site/public/tags/电热力耦合.html",
+    "site/public/tags/异构集成.html",
+    "site/public/tags/多物理场仿真.html",
+    "site/public/tags/先进制程.html",
+    "site/public/tags/版图.html",
+    "site/public/tags/垂直器件.html",
+    "site/public/static/og-image.png",
+    "site/public/static/icon.png",
+    "site/node_modules/parse-entities/node_modules/@types/unist/README.md",
+    "site/node_modules/@parcel/watcher/node_modules/picomatch/README.md",
+    "site/node_modules/serve-handler/node_modules/minimatch/README.md",
+    "site/node_modules/serve-handler/node_modules/brace-expansion/README.md",
+    "site/node_modules/serve-handler/node_modules/balanced-match/README.md",
+    "site/node_modules/serve-handler/node_modules/balanced-match/LICENSE.md",
+    "site/node_modules/sass/node_modules/readdirp/README.md",
+    "site/node_modules/sass/node_modules/chokidar/README.md",
+    "site/node_modules/isomorphic-git/node_modules/ignore/README.md",
+    "site/node_modules/node-addon-api/tools/README.md",
+    "site/node_modules/@types/ws/README.md",
+    "site/node_modules/@ungap/structured-clone/README.md",
+    "site/node_modules/@types/unist/README.md",
+    "site/node_modules/@types/node/README.md",
+    "site/node_modules/@types/yargs/README.md",
+    "site/node_modules/@sindresorhus/merge-streams/readme.md",
+    "site/node_modules/@types/yargs-parser/README.md",
+    "site/node_modules/@types/katex/README.md",
+    "site/node_modules/@types/mdast/README.md",
+    "site/node_modules/@types/pretty-time/README.md",
+    "site/node_modules/@types/source-map-support/README.md",
+    "site/node_modules/@types/hast/README.md",
+    "site/node_modules/@types/ms/README.md",
+    "site/node_modules/@types/debug/README.md",
+    "site/node_modules/@types/estree-jsx/README.md",
+    "site/quartz/static/og-image.png",
+    "site/quartz/static/icon.png",
+    "public/static/og-image.png",
+    "public/static/icon.png",
+    "quartz/static/og-image.png",
+    "quartz/static/icon.png"
   ]
 }

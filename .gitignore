@@ -1,6 +1,12 @@
 /raw/
 /.trash/
 
+site/node_modules
+site/public
+site/.quartz/
+site/.quartz-cache
+site/tsconfig.tsbuildinfo
+
 # 输出文件夹
 **/output/
 **/outputs/
