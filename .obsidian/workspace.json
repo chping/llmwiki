@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/papers/zang_2025_dawn.md",
+                "file": "wiki/papers/bie_2026_xunlian.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "zang_2025_dawn"
+              "title": "bie_2026_xunlian"
             }
           }
         ]
@@ -186,8 +186,10 @@
   "active": "2143288ec8837baf",
   "lastOpenFiles": [
     "wiki/logs/2026-06.md",
-    "wiki/logs/2026_06.md",
     "wiki/index.md",
+    "README.md",
+    "wiki/papers/zang_2025_dawn.md",
+    "wiki/logs/2026_06.md",
     "wiki/papers/template.md"
   ]
 }
