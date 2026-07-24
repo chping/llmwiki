@@ -29,7 +29,35 @@ npx --yes markdownlint-cli wiki/
 
 If lint fails, fix only necessary Markdown issues outside protected `<!-- user-notes:start -->...<!-- user-notes:end -->` blocks, then rerun lint.
 
-4. Validate Quartz build from `site/`:
+4. Check Quartz math syntax before building. Quartz v5 LaTeX uses `remark-math`, so display math must use `$$...$$` and inline math must use `$...$`. It does not render Obsidian/LaTeX delimiters `\[...\]` or `\(...\)` reliably.
+
+```bash
+rg '^\\\[|^\\\]$|\\\(|\\\)' wiki/
+```
+
+If matches are found, convert only formula delimiters:
+
+- Convert block display math from:
+
+```latex
+\[
+...
+\]
+```
+
+to:
+
+```latex
+$$
+...
+$$
+```
+
+- Convert inline math from `\(x\)` to `$x$` only when it is clearly math syntax, not prose or an escaped literal.
+
+After conversion, rerun the check until no unsupported formula delimiters remain.
+
+5. Validate Quartz build from `site/`:
 
 ```bash
 cd site
@@ -38,25 +66,33 @@ npm run quartz -- build -d ../wiki
 
 If the local default Node is too old, use the Codex bundled Node path already available in the thread, or tell the user to use Node 22+.
 
-5. Stage only relevant files:
+If formula rendering was changed, inspect the generated HTML for KaTeX markers before committing:
+
+```bash
+rg 'katex|math-display' site/public/
+```
+
+If formulas still appear as raw `\[` or `\(` in `site/public/`, fix the Markdown delimiters and rebuild.
+
+6. Stage only relevant files:
 
 ```bash
 git add <files>
 ```
 
-6. Commit with a concise Chinese message unless the user provided one:
+7. Commit with a concise Chinese message unless the user provided one:
 
 ```bash
 git commit -m "发布 Quartz wiki 站点"
 ```
 
-7. Push the current branch:
+8. Push the current branch:
 
 ```bash
 git push origin <branch>
 ```
 
-8. Confirm publishing. Prefer `gh` if available:
+9. Confirm publishing. Prefer `gh` if available:
 
 ```bash
 gh run list --workflow deploy.yml --limit 3
