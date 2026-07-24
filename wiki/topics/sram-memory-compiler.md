@@ -582,7 +582,7 @@ Center Decode 通常是物理实现选项，对逻辑接口透明。部分厂商
 
 ## 12. Power Gating
 
-Power Gating 通过关闭阵列或外围电路的电源、施加源极偏置或降低 Retention 电压，减少待机漏电。SRAM 的低功耗状态必须同时考虑数据是否保留、供电域状态、唤醒时间、输出状态和进入/退出时序。
+Power Gating 通过关闭阵列或外围电路的电源、施加 [[sram-source-bias|Source Bias]] 或降低 Retention 电压，减少待机漏电。SRAM 的低功耗状态必须同时考虑数据是否保留、供电域状态、唤醒时间、输出状态和进入/退出时序。
 
 ### 12.1 通用功耗状态
 
@@ -633,7 +633,7 @@ Light Sleep 是介于 Standby 和 Deep Sleep 之间的低功耗模式，典型�
 
 - 关闭 Precharge、Sense Amplifier、Decoder 和内部时钟等外围活动；
 - 对部分外围供电进行 Power Gating；
-- 对 BitCell 或外围施加轻度 Source Bias；
+- 对 BitCell 或外围施加轻度 [[sram-source-bias|Source Bias]]；
 - 保持 Array 在标称电压或接近标称电压，因此数据通常保留。
 
 典型特点：
@@ -652,7 +652,7 @@ Deep Sleep 通常是数据保持型的深度低功耗模式。常见实现为：
 
 - 关闭大部分或全部 Periphery；
 - 将 BitCell Array 保持在 Retention Voltage；
-- 启用更强的 Source Bias 或内部 Header Switch；
+- 启用更强的 [[sram-source-bias|Source Bias]] 或内部 Header Switch；
 - 仅保留维持存储状态所需的电源路径。
 
 典型特点：

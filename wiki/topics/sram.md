@@ -77,6 +77,7 @@ SRAM 宏通常由位单元阵列、行列译码器、字线驱动器、预充电
 ## 相关主题
 
 - [[sram-memory-compiler|SRAM Memory Compiler 功能与配置]]
+- [[sram-source-bias|SRAM Source Bias]]
 - [[ffet-sram-design|FFET 与 SRAM 设计]]
 - [[bipolar-sram|Bipolar SRAM]]
 - [[3D_SRAM_Design_amp_Optimization_with_Open_Source_Memory_Compiler|3D SRAM 设计与开源 Memory Compiler]]

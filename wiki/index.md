@@ -21,6 +21,7 @@ source_uri:
 
 - [[topics/sram|SRAM]]
 - [[topics/sram-memory-compiler|SRAM Memory Compiler 功能与配置]]
+- [[topics/sram-source-bias|SRAM Source Bias]]
 - [[topics/ffet-sram-design|FFET 与 SRAM 设计]]
 - [[topics/3D_SRAM_Design_amp_Optimization_with_Open_Source_Memory_Compiler|3D SRAM 设计与开源 Memory Compiler]]
 
@@ -63,15 +64,15 @@ source_uri:
 
 <!-- AUTO-GENERATED:START -->
 
-- 总计 37 页 · 主题 33 · 论文 4 · 对话 0
+- 总计 38 页 · 主题 34 · 论文 4 · 对话 0
 
 ### 最近更新
 
 - 2026-07-24 · [[topics/sram|SRAM]] — SRAM 的基本原理、位单元结构、关键指标、阵列组织、设计流程与先进工艺研究方向。
 - 2026-07-24 · [[topics/sram-memory-compiler|SRAM Memory Compiler 功能与配置]] — SRAM Memory Compiler 的容量配置、阵列组织、输入 Slew、输出负载、低功耗、测试冗余、交付视图及选型签核说明。
+- 2026-07-24 · [[topics/sram-source-bias|SRAM Source Bias]] — SRAM Source Bias 通过待机时调整 Cell 源极电位降低亚阈值漏电，并在功耗、数据保持裕量和唤醒开销之间进行权衡。
 - 2026-06-10 · [[papers/ning_2026_code|Code as Agent Harness]] — 论文提出 code as agent harness 视角，把代码视为智能体推理、行动、状态管理、反馈验证和多智能体协作的可执行基础设施，并综述接口、机制、扩展与开放问题。
 - 2026-06-10 · [[papers/chendeli_202606_auto_research_survey|From Copilots to Colleagues: A Survey of Autonomous Research Agents in the Age of Foundation Models]] — 本文综述基础模型时代的自主研究代理，提出 L1-L5 自主性分类、四类架构模式和六项开放问题，指出当前前沿多停留在有边界的 L4，自主选题与可靠自评仍是关键瓶颈。
-- 2026-06-06 · [[papers/bie_2026_xunlian|训练小模型：2026 年最被低估的 AI 技能]] — 文章认为，低成本小模型微调的关键不在训练工具本身，而在持续生成、筛选、评估和迭代任务数据的数据集工厂。
 
 <!-- AUTO-GENERATED:END -->
 
