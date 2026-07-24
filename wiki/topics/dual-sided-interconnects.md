@@ -44,8 +44,8 @@ related_pages:
 
 ## 7. 相关概念（Related Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/flip-3d-integration-f3d|Flip 3D Integration (F3D)]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/flip-3d-integration-f3d|Flip 3D Integration (F3D)]]
 
 ## 8. 来源（Sources）
 

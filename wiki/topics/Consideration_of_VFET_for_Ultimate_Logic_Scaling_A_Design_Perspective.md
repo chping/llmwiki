@@ -19,22 +19,22 @@ entities:
 ---
 
 <!-- markdownlint-disable-next-line MD013 -->
-# [[pages/2026/04_26/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective|Consideration of VFET for Ultimate Logic Scaling: A Design Perspective]]
+# Consideration of VFET for Ultimate Logic Scaling: A Design Perspective
 
 ## 1. 文件信息（Metadata）
 
 <!-- markdownlint-disable-next-line MD013 -->
 - 文章标题：Consideration of VFET for Ultimate Logic Scaling: A Design Perspective
-- 原始文件路径：[原始 PDF](../../../../raw/2026/04_26/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective.pdf)
+- 原始文件路径：原始 PDF（仓库中未提供）
 - 文件类型：PDF
 - 来源：2025 IEEE Electron Devices Technology & Manufacturing Conference (EDTM)
-- 作者 / 机构：Yimeng Wang 等，[[entities/peking-university|北京大学]]
+- 作者 / 机构：Yimeng Wang 等，北京大学
 - 时间：2025
 - DOI：`10.1109/EDTM61175.2025.11040360`
 
 ## 2. 摘要（Summary）
 
-本文从 DTCO 视角系统讨论 [[concepts/vertical-field-effect-transistor-vfet|VFET]]
+本文从 DTCO 视角系统讨论 [[topics/vertical-field-effect-transistor-vfet|VFET]]
 用于先进逻辑缩放时的版图与电路设计问题，重点比较横向与纵向
 nanosheet placement，以及器件正向 / 反向工作模式带来的 PPA 差异。
 结果表明，纵向 nanosheet 的 FWD 设计在相同功耗下可获得约 7% 的性能优势，
@@ -75,13 +75,13 @@ nanosheet placement，以及器件正向 / 反向工作模式带来的 PPA 差�
 
 ## 6. 关键概念（Concepts）
 
-- [[concepts/vertical-field-effect-transistor-vfet|Vertical Field-Effect Transistor (VFET)]]
-- [[concepts/complementary-fet-cfet|Complementary FET (CFET)]]
-- [[concepts/flip-fet|Flip FET]]
+- [[topics/vertical-field-effect-transistor-vfet|Vertical Field-Effect Transistor (VFET)]]
+- [[topics/complementary-fet-cfet|Complementary FET (CFET)]]
+- [[topics/flip-fet|Flip FET]]
 
 ## 7. 相关实体（Entities）
 
-- [[entities/peking-university|北京大学]]
+- 北京大学
 
 ## 8. 关联主题（Topics）
 
@@ -96,5 +96,5 @@ nanosheet placement，以及器件正向 / 反向工作模式带来的 PPA 差�
 
 ## 10. 参考与来源（References）
 
-- [原始文件](../../../../raw/2026/04_26/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective.pdf)
+- 原始文件（仓库中未提供）
 - [[topics/vfet-layout-design|VFET 布局设计]]

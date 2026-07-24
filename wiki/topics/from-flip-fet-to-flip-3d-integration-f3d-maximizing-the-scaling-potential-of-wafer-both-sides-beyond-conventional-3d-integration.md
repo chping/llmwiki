@@ -21,16 +21,16 @@ entities:
 ---
 
 <!-- markdownlint-disable-next-line MD013 -->
-# [[From Flip FET to Flip 3D Integration (F3D): Maximizing the Scaling Potential of Wafer Both Sides Beyond Conventional 3D Integration]]
+# From Flip FET to Flip 3D Integration (F3D): Maximizing the Scaling Potential of Wafer Both Sides Beyond Conventional 3D Integration
 
 ## 1. 文件信息（Metadata）
 
 <!-- markdownlint-disable-next-line MD013 -->
 - 文章标题：From Flip FET to Flip 3D Integration (F3D): Maximizing the Scaling Potential of Wafer Both Sides Beyond Conventional 3D Integration
-- 原始文件路径：[原始 PDF](From_Flip_FET_to_Flip_3D_Integration_F3D_Maximizing_the_Scaling_Potential_of_Wafer_Both_Sides_Beyond_Conventional_3D_Integration.pdf)
+- 原始文件路径：原始 PDF（仓库中未提供）
 - 文件类型：PDF
 - 来源：2025 IEEE Electron Devices Technology & Manufacturing Conference (EDTM)
-- 作者 / 机构：Heng Wu 等，[[entities/peking-university|北京大学]]集成电路学院
+- 作者 / 机构：Heng Wu 等，北京大学集成电路学院
 - 时间：2025
 - DOI：`10.1109/EDTM61175.2025.11040727`
 
@@ -38,9 +38,9 @@ entities:
 
 本文提出 Flip 3D Integration（F3D），试图把三维晶体管堆叠、
 双面互连、双面混合键合堆叠以及双面 Monolithic 3D 统一到同一条技术
-路线中。论文以 32-bit [[entities/risc-v|RISC-V]] 核为案例，说明在既有
-[[concepts/flip-fet|Flip FET]] 基础上，引入
-[[concepts/dual-sided-interconnects|双面互连]] 后，布线自由度提升，
+路线中。论文以 32-bit [[topics/RISC-V|RISC-V]] 核为案例，说明在既有
+[[topics/flip-fet|Flip FET]] 基础上，引入
+[[topics/dual-sided-interconnects|双面互连]] 后，布线自由度提升，
 核心面积可下降 6.8%，EDP 可改善 5.9%。作者进一步提出 Double Flips 与
 Triple Flips 等多次翻转流程，以缓解热预算约束，并报告在 Triple
 Flips 优化后，相比未优化方案可带来最高 3.2% 的 EDP 改善和 2.3%
@@ -56,11 +56,11 @@ Flips 优化后，相比未优化方案可带来最高 3.2% 的 EDP 改善和 2.
 
 ### 4.1 关键方法 / 模型
 
-- 提出 [[concepts/flip-3d-integration-f3d|F3D]]，
+- 提出 [[topics/flip-3d-integration-f3d|F3D]]，
   把 3D 晶体管、双面互连、3D die stacking 与双面 M3D 组合起来。
-- 在 [[concepts/flip-fet|Flip FET]] 中采用 DSI 2.0，使输入引脚能够分布在
+- 在 [[topics/flip-fet|Flip FET]] 中采用 DSI 2.0，使输入引脚能够分布在
   frontside 与 backside 两侧。
-- 提出 [[concepts/multi-flipping-processes|Multi-Flipping 流程]]，
+- 提出 [[topics/multi-flipping-processes|Multi-Flipping 流程]]，
   包括 Single Flip、Double Flips、Triple Flips，用于在制造流程中重新安排
   高温步骤与金属互连形成顺序。
 
@@ -84,15 +84,15 @@ Flips 优化后，相比未优化方案可带来最高 3.2% 的 EDP 改善和 2.
 
 ## 6. 关键概念（Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/flip-3d-integration-f3d|Flip 3D Integration (F3D)]]
-- [[concepts/dual-sided-interconnects|Dual-Sided Interconnects]]
-- [[concepts/multi-flipping-processes|Multi-Flipping Processes]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/flip-3d-integration-f3d|Flip 3D Integration (F3D)]]
+- [[topics/dual-sided-interconnects|Dual-Sided Interconnects]]
+- [[topics/multi-flipping-processes|Multi-Flipping Processes]]
 
 ## 7. 相关实体（Entities）
 
-- [[entities/peking-university|北京大学]]
-- [[entities/risc-v|RISC-V]]
+- 北京大学
+- [[topics/RISC-V|RISC-V]]
 
 ## 8. 关联主题（Topics）
 
@@ -106,5 +106,5 @@ Flips 优化后，相比未优化方案可带来最高 3.2% 的 EDP 改善和 2.
 
 ## 10. 参考与来源（References）
 
-- [原始文件](From_Flip_FET_to_Flip_3D_Integration_F3D_Maximizing_the_Scaling_Potential_of_Wafer_Both_Sides_Beyond_Conventional_3D_Integration.pdf)
+- 原始文件（仓库中未提供）
 - [[topics/advanced-3d-integration|先进三维集成]]

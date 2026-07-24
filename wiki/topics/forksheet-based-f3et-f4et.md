@@ -12,7 +12,7 @@ related_pages:
   - PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors
 ---
 
-# [[Forksheet-based F3ET (F4ET)]]
+# Forksheet-based F3ET (F4ET)
 
 ## 1. 定义（Definition）
 
@@ -44,9 +44,9 @@ FFET 变体，用来把 cell height 推进到 2T 级。
 
 ## 7. 相关概念（Related Concepts）
 
-- [[concepts/fully-aligned-ffet-f3et|Fully-aligned FFET (F3ET)]]
-- [[concepts/cfet-based-ffet-cffet|CFET-based FFET (CFFET)]]
+- [[topics/fully-aligned-ffet-f3et|Fully-aligned FFET (F3ET)]]
+- [[topics/cfet-based-ffet-cffet|CFET-based FFET (CFFET)]]
 
 ## 8. 来源（Sources）
 
-- [[pages/2026/04_26/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors|PPA Scaling of FFET Technology Down to A2]]
+- [[topics/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors|PPA Scaling of FFET Technology Down to A2]]

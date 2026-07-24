@@ -16,27 +16,27 @@ entities:
   - peking-university
 ---
 
-# [[pages/2026/04_26/Process_Development_and_Optimization_of_Flip_FET_FFET_for_Stacked_Transistors_Technology|Process Development and Optimization of Flip FET (FFET) for Stacked Transistors Technology]]
+# Process Development and Optimization of Flip FET (FFET) for Stacked Transistors Technology
 
 ## 1. 文件信息（Metadata）
 
 <!-- markdownlint-disable-next-line MD013 -->
 - 文章标题：Process Development and Optimization of Flip FET (FFET) for Stacked Transistors Technology
-- 原始文件路径：[原始 PDF](../../../../raw/2026/04_26/Process_Development_and_Optimization_of_Flip_FET_FFET_for_Stacked_Transistors_Technology.pdf)
+- 原始文件路径：原始 PDF（仓库中未提供）
 - 文件类型：PDF
 - 来源：IEEE Transactions on Electron Devices
-- 作者 / 机构：Wanyue Peng 等，[[entities/peking-university|北京大学]]
+- 作者 / 机构：Wanyue Peng 等，北京大学
 - 时间：2025
 - DOI：`10.1109/TED.2025.3609731`
 
 ## 2. 摘要（Summary）
 
-本文系统讨论 [[concepts/flip-fet|FFET]] 在工艺实现层面的关键问题，
+本文系统讨论 [[topics/flip-fet|FFET]] 在工艺实现层面的关键问题，
 覆盖 fin etch、wafer bonding and flipping、substrate thinning、
 active fin profile 优化、热预算与金属污染等。作者把 FFET 进一步扩展到
 nanosheet 版本，并提出 Double Flips / Triple Flips 等多次翻转流程，
 以同时处理热预算与污染问题。文章最后从高纵横比工艺复杂度与电学表现两侧，
-将 FFET 与 [[concepts/complementary-fet-cfet|Mono. CFET]] 做了较系统比较，
+将 FFET 与 [[topics/complementary-fet-cfet|Mono. CFET]] 做了较系统比较，
 论证 FFET 在制造可行性上的优势。
 
 ## 3. 研究背景与问题定义（Background & Problem）
@@ -73,12 +73,12 @@ nanosheet 版本，并提出 Double Flips / Triple Flips 等多次翻转流程�
 
 ## 6. 关键概念（Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/complementary-fet-cfet|Complementary FET (CFET)]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/complementary-fet-cfet|Complementary FET (CFET)]]
 
 ## 7. 相关实体（Entities）
 
-- [[entities/peking-university|北京大学]]
+- 北京大学
 
 ## 8. 关联主题（Topics）
 
@@ -92,5 +92,5 @@ nanosheet 版本，并提出 Double Flips / Triple Flips 等多次翻转流程�
 
 ## 10. 参考与来源（References）
 
-- [原始文件](../../../../raw/2026/04_26/Process_Development_and_Optimization_of_Flip_FET_FFET_for_Stacked_Transistors_Technology.pdf)
+- 原始文件（仓库中未提供）
 - [[topics/advanced-3d-integration|先进三维集成]]

@@ -17,26 +17,26 @@ entities:
   - peking-university
 ---
 
-# [[pages/2026/04_26/Overlay-aware_variation_study_of_flip_FET_and_benchmark_with_CFET|Overlay-aware Variation Study of Flip FET and Benchmark with CFET]]
+# Overlay-aware Variation Study of Flip FET and Benchmark with CFET
 
 ## 1. 文件信息（Metadata）
 
 <!-- markdownlint-disable-next-line MD013 -->
 - 文章标题：Overlay-aware Variation Study of Flip FET and Benchmark with CFET
-- 原始文件路径：[原始 PDF](../../../../raw/2026/04_26/Overlay-aware_variation_study_of_flip_FET_and_benchmark_with_CFET.pdf)
+- 原始文件路径：原始 PDF（仓库中未提供）
 - 文件类型：PDF
 - 来源：会议论文
-- 作者 / 机构：Wanyue Peng 等，[[entities/peking-university|北京大学]]
+- 作者 / 机构：Wanyue Peng 等，北京大学
 - 时间：2025
 
 ## 2. 摘要（Summary）
 
-本文围绕 [[concepts/flip-fet|FFET]] 的 backside lithography misalignment
+本文围绕 [[topics/flip-fet|FFET]] 的 backside lithography misalignment
 开展 overlay-aware 变异研究，并与
-[[concepts/complementary-fet-cfet|CFET]] 做功耗性能对比。作者发现，
+[[topics/complementary-fet-cfet|CFET]] 做功耗性能对比。作者发现，
 在 0 到 4 nm 的合理失配范围内，FFET 的 iso-leakage 频率最多下降约 2.20%，
 而主要变异来源并不是所有寄生一起恶化，而是
-[[concepts/drain-merge|Drain Merge]] 电阻对 misalignment 极度敏感。
+[[topics/drain-merge|Drain Merge]] 电阻对 misalignment 极度敏感。
 通过 DTCO 重新布置电源轨和增大相关几何裕量后，最坏频率下降可压到约 1.30%，
 Monte Carlo 结果也显示分布标准差明显改善。
 
@@ -56,7 +56,7 @@ Monte Carlo 结果也显示分布标准差明显改善。
 
 ### 4.2 核心原理 / 机制
 
-- misalignment 会使 [[concepts/drain-merge|Drain Merge]] 和 Gate Merge
+- misalignment 会使 [[topics/drain-merge|Drain Merge]] 和 Gate Merge
   与前面结构的落点偏离，造成寄生电阻变化。
 - 其中 DM 电阻波动远大于 GM，因此成为主导频率退化的来源。
 - 通过重新安排电源轨位置并给 Drain Merge 留出更大工艺裕量，可以明显抑制变异。
@@ -75,13 +75,13 @@ Monte Carlo 结果也显示分布标准差明显改善。
 
 ## 6. 关键概念（Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/complementary-fet-cfet|Complementary FET (CFET)]]
-- [[concepts/drain-merge|Drain Merge]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/complementary-fet-cfet|Complementary FET (CFET)]]
+- [[topics/drain-merge|Drain Merge]]
 
 ## 7. 相关实体（Entities）
 
-- [[entities/peking-university|北京大学]]
+- 北京大学
 
 ## 8. 关联主题（Topics）
 
@@ -95,5 +95,5 @@ Monte Carlo 结果也显示分布标准差明显改善。
 
 ## 10. 参考与来源（References）
 
-- [原始文件](../../../../raw/2026/04_26/Overlay-aware_variation_study_of_flip_FET_and_benchmark_with_CFET.pdf)
+- 原始文件（仓库中未提供）
 - [[topics/advanced-3d-integration|先进三维集成]]

@@ -17,7 +17,7 @@ related_pages:
   - Process_Development_and_Optimization_of_Flip_FET_FFET_for_Stacked_Transistors_Technology
 ---
 
-# [[Complementary FET (CFET)]]
+# Complementary FET (CFET)
 
 ## 1. 定义（Definition）
 
@@ -49,11 +49,11 @@ CFET 是把 nFET 与 pFET 以垂直方向堆叠在同一 footprint 中的
 
 ## 7. 相关概念（Related Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/vertical-field-effect-transistor-vfet|Vertical Field-Effect Transistor (VFET)]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/vertical-field-effect-transistor-vfet|Vertical Field-Effect Transistor (VFET)]]
 
 ## 8. 来源（Sources）
 
-- [[pages/2026/04_26/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective|Consideration of VFET for Ultimate Logic Scaling]]
-- [[pages/2026/04_26/Overlay-aware_variation_study_of_flip_FET_and_benchmark_with_CFET|Overlay-aware Variation Study of Flip FET and Benchmark with CFET]]
-- [[pages/2026/04_26/Process_Development_and_Optimization_of_Flip_FET_FFET_for_Stacked_Transistors_Technology|Process Development and Optimization of FFET]]
+- [[topics/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective|Consideration of VFET for Ultimate Logic Scaling]]
+- [[topics/Overlay-aware_variation_study_of_flip_FET_and_benchmark_with_CFET|Overlay-aware Variation Study of Flip FET and Benchmark with CFET]]
+- [[topics/Process_Development_and_Optimization_of_Flip_FET_FFET_for_Stacked_Transistors_Technology|Process Development and Optimization of FFET]]

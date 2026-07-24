@@ -15,7 +15,7 @@ related_pages:
   - FFET工艺特点及对SRAM设计影响表格汇总
 ---
 
-# [[Drain Merge]]
+# Drain Merge
 
 ## 1. 定义（Definition）
 
@@ -47,10 +47,10 @@ Drain Merge 是 FFET 中连接前后两面相关漏极区域的跨层连接结�
 
 ## 7. 相关概念（Related Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/bipolar-sram|Bipolar SRAM]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/bipolar-sram|Bipolar SRAM]]
 
 ## 8. 来源（Sources）
 
-- [[pages/2026/04_26/Overlay-aware_variation_study_of_flip_FET_and_benchmark_with_CFET|Overlay-aware Variation Study of Flip FET and Benchmark with CFET]]
-- [[pages/2026/04_26/First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects|First Experimental Demonstration of FFET]]
+- [[topics/Overlay-aware_variation_study_of_flip_FET_and_benchmark_with_CFET|Overlay-aware Variation Study of Flip FET and Benchmark with CFET]]
+- [[topics/First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects|First Experimental Demonstration of FFET]]

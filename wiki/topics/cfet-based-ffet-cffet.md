@@ -13,7 +13,7 @@ related_pages:
   - PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors
 ---
 
-# [[CFET-based FFET (CFFET)]]
+# CFET-based FFET (CFFET)
 
 ## 1. 定义（Definition）
 
@@ -45,9 +45,9 @@ CFFET 是 FFET 路线在 A2 节点上的超堆叠扩展，
 
 ## 7. 相关概念（Related Concepts）
 
-- [[concepts/forksheet-based-f3et-f4et|Forksheet-based F3ET (F4ET)]]
-- [[concepts/bipolar-sram|Bipolar SRAM]]
+- [[topics/forksheet-based-f3et-f4et|Forksheet-based F3ET (F4ET)]]
+- [[topics/bipolar-sram|Bipolar SRAM]]
 
 ## 8. 来源（Sources）
 
-- [[pages/2026/04_26/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors|PPA Scaling of FFET Technology Down to A2]]
+- [[topics/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors|PPA Scaling of FFET Technology Down to A2]]

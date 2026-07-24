@@ -17,12 +17,12 @@ concepts:
 entities: []
 ---
 
-# [[FFET工艺特点及对SRAM设计影响表格汇总]]
+# FFET工艺特点及对SRAM设计影响表格汇总
 
 ## 1. 文件信息（Metadata）
 
 - 文章标题：FFET工艺特点及对SRAM设计影响表格汇总
-- 原始文件路径：[原始 Markdown](../../../../raw/2026/04_26/FFET工艺特点及对SRAM设计影响表格汇总.md)
+- 原始文件路径：原始 Markdown（仓库中未提供）
 - 文件类型：Markdown
 - 来源：研究整理笔记
 - 作者 / 机构：未署名
@@ -53,7 +53,7 @@ bitcell 面积、SNM、Vmin、Iread、外围拥塞和可测性逐项对应起来
 ### 4.2 核心原理 / 机制
 
 - FFET 的收益不仅来自 bitcell 缩小，还来自外围电路可用双面布线缓解拥塞。
-- 与此同时，overlay 和 [[concepts/drain-merge|Drain Merge]] 的波动会放大 SRAM 读路径寄生和统计尾部。
+- 与此同时，overlay 和 [[topics/drain-merge|Drain Merge]] 的波动会放大 SRAM 读路径寄生和统计尾部。
 - 表格强调首颗芯片应优先建立“结构变化到失效机理”的可测关系。
 
 ### 4.3 数据与实验（如适用）
@@ -70,9 +70,9 @@ bitcell 面积、SNM、Vmin、Iread、外围拥塞和可测性逐项对应起来
 
 ## 6. 关键概念（Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/bipolar-sram|Bipolar SRAM]]
-- [[concepts/drain-merge|Drain Merge]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/bipolar-sram|Bipolar SRAM]]
+- [[topics/drain-merge|Drain Merge]]
 
 ## 7. 相关实体（Entities）
 
@@ -91,5 +91,5 @@ bitcell 面积、SNM、Vmin、Iread、外围拥塞和可测性逐项对应起来
 
 ## 10. 参考与来源（References）
 
-- [原始文件](../../../../raw/2026/04_26/FFET工艺特点及对SRAM设计影响表格汇总.md)
+- 原始文件（仓库中未提供）
 - [[topics/ffet-sram-design|FFET 与 SRAM 设计]]

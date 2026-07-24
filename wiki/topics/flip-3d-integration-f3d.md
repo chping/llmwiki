@@ -19,7 +19,7 @@ F3D 是论文提出的一种统一三维集成框架，目标是在同一技术�
 
 ## 2. 背景（Background）
 
-- 来源：作者将其定位为对 [[concepts/flip-fet|Flip FET]] 的进一步扩展。
+- 来源：作者将其定位为对 [[topics/flip-fet|Flip FET]] 的进一步扩展。
 - 发展过程：F3D 并非单一器件创新，而是把前期分散发展的多种 3D 集成技术拼接成更完整的工艺蓝图。
 
 ## 3. 原理说明（Explanation）
@@ -27,7 +27,7 @@ F3D 是论文提出的一种统一三维集成框架，目标是在同一技术�
 - 在器件层，F3D 继承 FFET 的三维晶体管和双面互连能力。
 - 在封装层，F3D 依赖双面 I/O 与双面 hybrid bonding，
   支持 face-to-face、back-to-back、face-to-back 等堆叠方式。
-- 在工艺层，F3D 使用 [[concepts/multi-flipping-processes|Multi-Flipping Processes]]
+- 在工艺层，F3D 使用 [[topics/multi-flipping-processes|Multi-Flipping Processes]]
   缓解热预算冲突，使双面 M3D 更可落地。
 
 ## 4. 数学形式（Formalism）
@@ -47,9 +47,9 @@ F3D 是论文提出的一种统一三维集成框架，目标是在同一技术�
 
 ## 7. 相关概念（Related Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/dual-sided-interconnects|Dual-Sided Interconnects]]
-- [[concepts/multi-flipping-processes|Multi-Flipping Processes]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/dual-sided-interconnects|Dual-Sided Interconnects]]
+- [[topics/multi-flipping-processes|Multi-Flipping Processes]]
 
 ## 8. 来源（Sources）
 

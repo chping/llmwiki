@@ -18,13 +18,13 @@ entities:
 ---
 
 <!-- markdownlint-disable-next-line MD013 -->
-# [[pages/2026/04_26/3D_SRAM_Design_amp_Optimization_with_Open_Source_Memory_Compiler|3D SRAM Design & Optimization with Open Source Memory Compiler]]
+# 3D SRAM Design & Optimization with Open Source Memory Compiler
 
 ## 1. 文件信息（Metadata）
 
 <!-- markdownlint-disable-next-line MD013 -->
 - 文章标题：3D SRAM Design & Optimization with Open Source Memory Compiler
-- 原始文件路径：[原始 PDF](../../../../raw/2026/04_26/3D_SRAM_Design_amp_Optimization_with_Open_Source_Memory_Compiler.pdf)
+- 原始文件路径：原始 PDF（仓库中未提供）
 - 文件类型：PDF
 - 来源：2024 International 3D Systems Integration Conference (3DIC)
 - 作者 / 机构：Sunan Chen、Chao Wu、Yunlang Cai、Yuan Guan、Yuanqing Cheng
@@ -49,7 +49,7 @@ SRAM 编译器流程扩展到更适合 3D memory 结构的设计空间。
 
 ### 4.1 关键方法 / 模型
 
-- 使用开源 [[entities/open-source-memory-compiler|memory compiler]]
+- 使用开源 [[topics/sram-memory-compiler|memory compiler]]
   作为 3D SRAM 设计与参数探索的基础平台。
 - 以 3D integration 为约束，分析 SRAM 的功耗、性能与面积折中。
 
@@ -71,11 +71,11 @@ SRAM 编译器流程扩展到更适合 3D memory 结构的设计空间。
 
 ## 6. 关键概念（Concepts）
 
-- [[concepts/bipolar-sram|Bipolar SRAM]]
+- [[topics/bipolar-sram|Bipolar SRAM]]
 
 ## 7. 相关实体（Entities）
 
-- [[entities/open-source-memory-compiler|Open Source Memory Compiler]]
+- [[topics/sram-memory-compiler|Open Source Memory Compiler]]
 
 ## 8. 关联主题（Topics）
 
@@ -91,5 +91,5 @@ SRAM 编译器流程扩展到更适合 3D memory 结构的设计空间。
 
 ## 10. 参考与来源（References）
 
-- [原始文件](../../../../raw/2026/04_26/3D_SRAM_Design_amp_Optimization_with_Open_Source_Memory_Compiler.pdf)
+- 原始文件（仓库中未提供）
 - [[topics/ffet-sram-design|FFET 与 SRAM 设计]]

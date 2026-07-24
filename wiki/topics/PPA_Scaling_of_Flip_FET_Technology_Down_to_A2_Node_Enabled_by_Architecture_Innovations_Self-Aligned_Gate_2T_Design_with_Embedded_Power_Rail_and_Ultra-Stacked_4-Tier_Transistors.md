@@ -23,25 +23,25 @@ entities:
 ---
 
 <!-- markdownlint-disable-next-line MD013 -->
-# [[pages/2026/04_26/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors|PPA Scaling of Flip FET Technology Down to A2 Node Enabled by Architecture Innovations: Self-aligned Gate, 2T Design with Embedded Power Rail and Ultra-stacked 4-Tier Transistors]]
+# PPA Scaling of Flip FET Technology Down to A2 Node Enabled by Architecture Innovations: Self-aligned Gate, 2T Design with Embedded Power Rail and Ultra-stacked 4-Tier Transistors
 
 ## 1. 文件信息（Metadata）
 
 <!-- markdownlint-disable-next-line MD013 -->
 - 文章标题：PPA Scaling of Flip FET Technology Down to A2 Node Enabled by Architecture Innovations: Self-aligned Gate, 2T Design with Embedded Power Rail and Ultra-stacked 4-Tier Transistors
-- 原始文件路径：[原始 PDF](../../../../raw/2026/04_26/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors.pdf)
+- 原始文件路径：原始 PDF（仓库中未提供）
 - 文件类型：PDF
 - 来源：2025 Symposium on VLSI Technology and Circuits
-- 作者 / 机构：Wanyue Peng 等，[[entities/peking-university|北京大学]]
+- 作者 / 机构：Wanyue Peng 等，北京大学
 - 时间：2025
 
 ## 2. 摘要（Summary）
 
-本文把 [[concepts/flip-fet|FFET]] 的路线图系统推进到 A2 节点，依次引入
-[[concepts/fully-aligned-ffet-f3et|F3ET]]、
-[[concepts/forksheet-based-f3et-f4et|F4ET]] 和
-[[concepts/cfet-based-ffet-cffet|CFFET]] 等架构创新，覆盖器件、
-标准单元、32-bit [[entities/risc-v|RISC-V]] 核和 SRAM 阵列四个层级。
+本文把 [[topics/flip-fet|FFET]] 的路线图系统推进到 A2 节点，依次引入
+[[topics/fully-aligned-ffet-f3et|F3ET]]、
+[[topics/forksheet-based-f3et-f4et|F4ET]] 和
+[[topics/cfet-based-ffet-cffet|CFFET]] 等架构创新，覆盖器件、
+标准单元、32-bit [[topics/RISC-V|RISC-V]] 核和 SRAM 阵列四个层级。
 作者报告从 A14 到 A5，RISC-V 核面积可缩小约 44.9% / 49.8%
 （HP / HD），频率提升约 20.0% / 27.9%；A3 HP F4ET 在
 `Vdd = 0.7 V` 时较 A14 HP FFETFin 可实现约 38.9% 的等功耗频率提升。
@@ -58,12 +58,12 @@ entities:
 ### 4.1 关键方法 / 模型
 
 - 建立从 A14 FFETFin、A10 FFETNS、A7
-  [[concepts/fully-aligned-ffet-f3et|F3ET]]、A5 / A3
-  [[concepts/forksheet-based-f3et-f4et|F4ET]] 到 A2
-  [[concepts/cfet-based-ffet-cffet|CFFET]] 的路线图。
+  [[topics/fully-aligned-ffet-f3et|F3ET]]、A5 / A3
+  [[topics/forksheet-based-f3et-f4et|F4ET]] 到 A2
+  [[topics/cfet-based-ffet-cffet|CFFET]] 的路线图。
 - 用 compact model、RO、标准单元库、32-bit
-  [[entities/risc-v|RISC-V]] 核 P&R 和 256×256 SRAM 阵列进行多层评估。
-- 比较 FFET 与 [[concepts/complementary-fet-cfet|CFET]]
+  [[topics/RISC-V|RISC-V]] 核 P&R 和 256×256 SRAM 阵列进行多层评估。
+- 比较 FFET 与 [[topics/complementary-fet-cfet|CFET]]
   在面积、性能和 SRAM 缩放上的差异。
 
 ### 4.2 核心原理 / 机制
@@ -86,17 +86,17 @@ entities:
 
 ## 6. 关键概念（Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/fully-aligned-ffet-f3et|Fully-aligned FFET (F3ET)]]
-- [[concepts/forksheet-based-f3et-f4et|Forksheet-based F3ET (F4ET)]]
-- [[concepts/cfet-based-ffet-cffet|CFET-based FFET (CFFET)]]
-- [[concepts/complementary-fet-cfet|Complementary FET (CFET)]]
-- [[concepts/bipolar-sram|Bipolar SRAM]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/fully-aligned-ffet-f3et|Fully-aligned FFET (F3ET)]]
+- [[topics/forksheet-based-f3et-f4et|Forksheet-based F3ET (F4ET)]]
+- [[topics/cfet-based-ffet-cffet|CFET-based FFET (CFFET)]]
+- [[topics/complementary-fet-cfet|Complementary FET (CFET)]]
+- [[topics/bipolar-sram|Bipolar SRAM]]
 
 ## 7. 相关实体（Entities）
 
-- [[entities/peking-university|北京大学]]
-- [[entities/risc-v|RISC-V]]
+- 北京大学
+- [[topics/RISC-V|RISC-V]]
 
 ## 8. 关联主题（Topics）
 
@@ -111,5 +111,5 @@ entities:
 
 ## 10. 参考与来源（References）
 
-- [原始文件](../../../../raw/2026/04_26/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors.pdf)
+- 原始文件（仓库中未提供）
 - [[topics/advanced-3d-integration|先进三维集成]]

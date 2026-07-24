@@ -15,13 +15,13 @@ related_pages:
 
 ## 1. 定义（Definition）
 
-Multi-Flipping Processes 是论文为 [[concepts/flip-3d-integration-f3d|F3D]]
+Multi-Flipping Processes 是论文为 [[topics/flip-3d-integration-f3d|F3D]]
 提出的一组晶圆多次翻转制造流程，通过在前后两面的 FEOL、MOL、BEOL
 之间重新排序，缓解高温步骤对金属与介质材料的热预算约束。
 
 ## 2. 背景（Background）
 
-- 来源：作者将其视为把 [[concepts/flip-fet|Flip FET]]
+- 来源：作者将其视为把 [[topics/flip-fet|Flip FET]]
   扩展到双面 M3D 与双面 die stacking 的关键工艺基础。
 - 发展过程：从仅用于概念验证的 Single Flip，发展到 Double
   Flips 与 Triple Flips，以兼顾先进逻辑节点的 gate-last 需求和后续
@@ -51,9 +51,9 @@ Double Flips / Triple Flips 的收益进行比较。
 
 ## 7. 相关概念（Related Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/flip-3d-integration-f3d|Flip 3D Integration (F3D)]]
-- [[concepts/dual-sided-interconnects|Dual-Sided Interconnects]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/flip-3d-integration-f3d|Flip 3D Integration (F3D)]]
+- [[topics/dual-sided-interconnects|Dual-Sided Interconnects]]
 
 ## 8. 来源（Sources）
 

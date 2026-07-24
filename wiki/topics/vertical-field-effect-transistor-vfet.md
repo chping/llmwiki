@@ -12,7 +12,7 @@ related_pages:
   - Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective
 ---
 
-# [[Vertical Field-Effect Transistor (VFET)]]
+# Vertical Field-Effect Transistor (VFET)
 
 ## 1. 定义（Definition）
 
@@ -40,14 +40,14 @@ VFET 是一种沟道电流沿垂直方向传输的场效应晶体管结构，
 
 ## 6. 示例（Examples）
 
-- [[pages/2026/04_26/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective|该论文]]
+- [[topics/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective|该论文]]
   讨论了 HNS / VNS 与 FWD / REV 对 VFET PPA 的影响。
 
 ## 7. 相关概念（Related Concepts）
 
-- [[concepts/complementary-fet-cfet|Complementary FET (CFET)]]
-- [[concepts/flip-fet|Flip FET]]
+- [[topics/complementary-fet-cfet|Complementary FET (CFET)]]
+- [[topics/flip-fet|Flip FET]]
 
 ## 8. 来源（Sources）
 
-- [[pages/2026/04_26/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective|Consideration of VFET for Ultimate Logic Scaling]]
+- [[topics/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective|Consideration of VFET for Ultimate Logic Scaling]]

@@ -15,7 +15,7 @@ related_pages:
   - FFET工艺特点及对SRAM设计影响表格汇总
 ---
 
-# [[Bipolar SRAM]]
+# Bipolar SRAM
 
 ## 1. 定义（Definition）
 
@@ -47,10 +47,10 @@ Bipolar SRAM 是 FFET 路线下提出的一类 SRAM 组织方式，
 
 ## 7. 相关概念（Related Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/drain-merge|Drain Merge]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/drain-merge|Drain Merge]]
 
 ## 8. 来源（Sources）
 
-- [[pages/2026/04_26/First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects|First Experimental Demonstration of FFET]]
-- [[pages/2026/04_26/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors|PPA Scaling of FFET Technology Down to A2]]
+- [[topics/First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects|First Experimental Demonstration of FFET]]
+- [[topics/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors|PPA Scaling of FFET Technology Down to A2]]

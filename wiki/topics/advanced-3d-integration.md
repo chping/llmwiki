@@ -31,7 +31,7 @@ related_entities:
   - open-source-memory-compiler
 ---
 
-# [[topics/advanced-3d-integration|先进三维集成]]
+# 先进三维集成
 
 ## 1. 主题概述（Overview）
 
@@ -52,13 +52,13 @@ related_entities:
 
 ## 4. 方法与技术路线（Methods）
 
-- 3D 晶体管路线：以 [[concepts/flip-fet|Flip FET]] 为代表，
+- 3D 晶体管路线：以 [[topics/flip-fet|Flip FET]] 为代表，
   强调更可制造的三维晶体管集成。
-- 双面互连路线：以 [[concepts/dual-sided-interconnects|双面互连]]
+- 双面互连路线：以 [[topics/dual-sided-interconnects|双面互连]]
   提升引脚分布与布线灵活性。
-- 系统级整合路线：以 [[concepts/flip-3d-integration-f3d|F3D]]
+- 系统级整合路线：以 [[topics/flip-3d-integration-f3d|F3D]]
   作为统一框架，连接器件、互连、封装与双面 M3D。
-- 工艺重排路线：以 [[concepts/multi-flipping-processes|Multi-Flipping Processes]]
+- 工艺重排路线：以 [[topics/multi-flipping-processes|Multi-Flipping Processes]]
   重新安排前后两面的高温步骤和互连形成顺序，降低热预算冲突。
 
 ## 5. 核心结论与共识（Key Insights）
@@ -70,31 +70,31 @@ related_entities:
 
 <!-- markdownlint-disable-next-line MD013 -->
 - [[from-flip-fet-to-flip-3d-integration-f3d-maximizing-the-scaling-potential-of-wafer-both-sides-beyond-conventional-3d-integration|From Flip FET to Flip 3D Integration (F3D)]]
-- [[pages/2026/04_26/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective|Consideration of VFET for Ultimate Logic Scaling]]
-- [[pages/2026/04_26/First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects|First Experimental Demonstration of FFET]]
-- [[pages/2026/04_26/Overlay-aware_variation_study_of_flip_FET_and_benchmark_with_CFET|Overlay-aware Variation Study of Flip FET and Benchmark with CFET]]
-- [[pages/2026/04_26/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors|PPA Scaling of FFET Technology Down to A2]]
-- [[pages/2026/04_26/Process_Development_and_Optimization_of_Flip_FET_FFET_for_Stacked_Transistors_Technology|Process Development and Optimization of FFET]]
+- [[topics/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective|Consideration of VFET for Ultimate Logic Scaling]]
+- [[topics/First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects|First Experimental Demonstration of FFET]]
+- [[topics/Overlay-aware_variation_study_of_flip_FET_and_benchmark_with_CFET|Overlay-aware Variation Study of Flip FET and Benchmark with CFET]]
+- [[topics/PPA_Scaling_of_Flip_FET_Technology_Down_to_A2_Node_Enabled_by_Architecture_Innovations_Self-Aligned_Gate_2T_Design_with_Embedded_Power_Rail_and_Ultra-Stacked_4-Tier_Transistors|PPA Scaling of FFET Technology Down to A2]]
+- [[topics/Process_Development_and_Optimization_of_Flip_FET_FFET_for_Stacked_Transistors_Technology|Process Development and Optimization of FFET]]
 
 ## 7. 关键概念（Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/flip-3d-integration-f3d|Flip 3D Integration (F3D)]]
-- [[concepts/dual-sided-interconnects|Dual-Sided Interconnects]]
-- [[concepts/multi-flipping-processes|Multi-Flipping Processes]]
-- [[concepts/vertical-field-effect-transistor-vfet|Vertical Field-Effect Transistor (VFET)]]
-- [[concepts/complementary-fet-cfet|Complementary FET (CFET)]]
-- [[concepts/drain-merge|Drain Merge]]
-- [[concepts/fully-aligned-ffet-f3et|Fully-aligned FFET (F3ET)]]
-- [[concepts/forksheet-based-f3et-f4et|Forksheet-based F3ET (F4ET)]]
-- [[concepts/cfet-based-ffet-cffet|CFET-based FFET (CFFET)]]
-- [[concepts/bipolar-sram|Bipolar SRAM]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/flip-3d-integration-f3d|Flip 3D Integration (F3D)]]
+- [[topics/dual-sided-interconnects|Dual-Sided Interconnects]]
+- [[topics/multi-flipping-processes|Multi-Flipping Processes]]
+- [[topics/vertical-field-effect-transistor-vfet|Vertical Field-Effect Transistor (VFET)]]
+- [[topics/complementary-fet-cfet|Complementary FET (CFET)]]
+- [[topics/drain-merge|Drain Merge]]
+- [[topics/fully-aligned-ffet-f3et|Fully-aligned FFET (F3ET)]]
+- [[topics/forksheet-based-f3et-f4et|Forksheet-based F3ET (F4ET)]]
+- [[topics/cfet-based-ffet-cffet|CFET-based FFET (CFFET)]]
+- [[topics/bipolar-sram|Bipolar SRAM]]
 
 ## 8. 相关实体（Entities）
 
-- [[entities/peking-university|北京大学]]
-- [[entities/risc-v|RISC-V]]
-- [[entities/open-source-memory-compiler|Open Source Memory Compiler]]
+- 北京大学
+- [[topics/RISC-V|RISC-V]]
+- [[topics/sram-memory-compiler|Open Source Memory Compiler]]
 
 ## 9. 发展趋势（Trends）
 

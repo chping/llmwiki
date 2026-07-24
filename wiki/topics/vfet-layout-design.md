@@ -16,11 +16,11 @@ related_entities:
   - peking-university
 ---
 
-# [[topics/vfet-layout-design|VFET 布局设计]]
+# VFET 布局设计
 
 ## 1. 主题概述（Overview）
 
-该主题关注 [[concepts/vertical-field-effect-transistor-vfet|VFET]]
+该主题关注 [[topics/vertical-field-effect-transistor-vfet|VFET]]
 在标准单元设计中的方向选择、器件非对称性和复杂门布局策略，
 重点是把器件结构约束翻译成实际可用的 DTCO 方法。
 
@@ -47,17 +47,17 @@ related_entities:
 
 ## 6. 相关页面（Source Pages）
 
-- [[pages/2026/04_26/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective|Consideration of VFET for Ultimate Logic Scaling]]
+- [[topics/Consideration_of_VFET_for_Ultimate_Logic_Scaling_A_Design_Perspective|Consideration of VFET for Ultimate Logic Scaling]]
 
 ## 7. 关键概念（Concepts）
 
-- [[concepts/vertical-field-effect-transistor-vfet|Vertical Field-Effect Transistor (VFET)]]
-- [[concepts/complementary-fet-cfet|Complementary FET (CFET)]]
-- [[concepts/flip-fet|Flip FET]]
+- [[topics/vertical-field-effect-transistor-vfet|Vertical Field-Effect Transistor (VFET)]]
+- [[topics/complementary-fet-cfet|Complementary FET (CFET)]]
+- [[topics/flip-fet|Flip FET]]
 
 ## 8. 相关实体（Entities）
 
-- [[entities/peking-university|北京大学]]
+- 北京大学
 
 ## 9. 发展趋势（Trends）
 

@@ -20,31 +20,31 @@ entities:
 ---
 
 <!-- markdownlint-disable-next-line MD013 -->
-# [[pages/2026/04_26/First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects|First Experimental Demonstration of Self-aligned Flip FET (FFET): a Breakthrough Stacked Transistor Technology with 2.5T Design, Dual-side Active and Interconnects]]
+# First Experimental Demonstration of Self-aligned Flip FET (FFET): a Breakthrough Stacked Transistor Technology with 2.5T Design, Dual-side Active and Interconnects
 
 ## 1. 文件信息（Metadata）
 
 <!-- markdownlint-disable-next-line MD013 -->
 - 文章标题：First Experimental Demonstration of Self-aligned Flip FET (FFET): a Breakthrough Stacked Transistor Technology with 2.5T Design, Dual-side Active and Interconnects
-- 原始文件路径：[原始 PDF](../../../../raw/2026/04_26/First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects.pdf)
+- 原始文件路径：原始 PDF（仓库中未提供）
 - 文件类型：PDF
 - 来源：2024 IEEE Symposium on VLSI Technology and Circuits
-- 作者 / 机构：Haoran Lu 等，[[entities/peking-university|北京大学]]
+- 作者 / 机构：Haoran Lu 等，北京大学
 - 时间：2024
 - DOI：`10.1109/VLSITECHNOLOGYANDCIR46783.2024.10631460`
 
 ## 2. 摘要（Summary）
 
-本文报告了 [[concepts/flip-fet|FFET]] 的首次实验性演示，重点展示其
+本文报告了 [[topics/flip-fet|FFET]] 的首次实验性演示，重点展示其
 self-aligned active、双面有源区和双面互连如何把堆叠晶体管推进到
 2.5T 级标准单元设计。作者强调 FFET 在制造友好性上优于
-[[concepts/complementary-fet-cfet|CFET]]，并用标准单元、反相器、
+[[topics/complementary-fet-cfet|CFET]]，并用标准单元、反相器、
 SRAM 与 Bi-SRAM 结构说明它在密度、布线和寄生优化上的潜力。
 论文给出的代表性结果包括：2.5T 标准单元在同设计规则下相较 CFET
 可进一步缩小约 12%，相较 FinFET SRAM 可获得约 35.9% 的密度提升；
 在 Bi-SRAM 中把 WL / BL 分置到两面后，BL 金属线电阻可下降约 31.5%，
 WL 金属线电阻可下降约 55%。文中还指出，
-[[concepts/drain-merge|Drain Merge]] 与 Gate Merge 等跨面连接结构是
+[[topics/drain-merge|Drain Merge]] 与 Gate Merge 等跨面连接结构是
 紧凑布局与双面信号组织的关键。
 
 ## 3. 研究背景与问题定义（Background & Problem）
@@ -66,7 +66,7 @@ WL 金属线电阻可下降约 55%。文中还指出，
 
 - FFET 把 n/p 器件放在晶圆前后两面，缓解 CFET 的高 AR 垂直集成难题。
 - 双面互连让信号和电源能分摊到两侧，提高 pin access 和系统级可布线性。
-- 通过 Gate Merge 与 [[concepts/drain-merge|Drain Merge]] 连接两侧关键节点，
+- 通过 Gate Merge 与 [[topics/drain-merge|Drain Merge]] 连接两侧关键节点，
   使紧凑标准单元和 SRAM 结构成为可能。
 - FFET 对每一层晶体管的 N / P 极性没有强约束，因此更容易构造
   Bipolar SRAM 这类双面协同的存储结构。
@@ -90,14 +90,14 @@ WL 金属线电阻可下降约 55%。文中还指出，
 
 ## 6. 关键概念（Concepts）
 
-- [[concepts/flip-fet|Flip FET]]
-- [[concepts/complementary-fet-cfet|Complementary FET (CFET)]]
-- [[concepts/drain-merge|Drain Merge]]
-- [[concepts/bipolar-sram|Bipolar SRAM]]
+- [[topics/flip-fet|Flip FET]]
+- [[topics/complementary-fet-cfet|Complementary FET (CFET)]]
+- [[topics/drain-merge|Drain Merge]]
+- [[topics/bipolar-sram|Bipolar SRAM]]
 
 ## 7. 相关实体（Entities）
 
-- [[entities/peking-university|北京大学]]
+- 北京大学
 
 ## 8. 关联主题（Topics）
 
@@ -117,5 +117,5 @@ WL 金属线电阻可下降约 55%。文中还指出，
 
 ## 10. 参考与来源（References）
 
-- [原始文件](../../../../raw/2026/04_26/First_Experimental_Demonstration_of_Self-Aligned_Flip_FET_FFET_A_Breakthrough_Stacked_Transistor_Technology_with_2.5T_Design_Dual-Side_Active_and_Interconnects.pdf)
+- 原始文件（仓库中未提供）
 - [[topics/advanced-3d-integration|先进三维集成]]
