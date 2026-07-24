@@ -7,7 +7,8 @@ tags:
   - memory-compiler
   - memory-IP
   - DFT
-summary: SRAM Memory Compiler 的容量配置、阵列组织、低功耗、测试冗余、交付视图及选型签核说明。
+  - Liberty
+summary: SRAM Memory Compiler 的容量配置、阵列组织、输入 Slew、输出负载、低功耗、测试冗余、交付视图及选型签核说明。
 zotero:
   item_key:
   citation_key:
@@ -254,6 +255,155 @@ T_{CLK}\ge t_{CQ,SRAM}+t_{logic}+t_{setup,next}+t_{uncertainty}
 $$
 
 因此，Macro Fmax 与 SoC 最终 Fmax 是相关但不同的指标。
+
+### 5.1 输入 Slew
+
+输入 Slew 指 SRAM 输入信号边沿变化的快慢，通常用输入信号从低电平变化到高电平，或从高电平变化到低电平所需的时间表示。常见定义包括：
+
+$$
+t_{\text{slew}}=t_{80\%}-t_{20\%}
+$$
+
+或者：
+
+$$
+t_{\text{slew}}=t_{70\%}-t_{30\%}
+$$
+
+具体采用 20%–80%、30%–70% 还是其他阈值，由 Liberty 库中的 `slew_lower_threshold_pct_*` 和 `slew_upper_threshold_pct_*` 定义。
+
+对于同步 SRAM，输入 Slew 主要包括：
+
+- 时钟 `CLK` 的上升沿和下降沿 Slew；
+- 地址 `A` 的输入 Slew；
+- 片选 `CS/CE` 的输入 Slew；
+- 写使能 `WE/WEN` 的输入 Slew；
+- 写数据 `D` 的输入 Slew；
+- Byte Write Enable 或 Bit Write Mask 的输入 Slew。
+
+例如，时钟输入 Slew 为 50 ps，表示时钟边沿在规定阈值范围内完成翻转所需时间约为 50 ps。
+
+输入边沿越慢，SRAM 内部输入缓冲器和译码电路翻转越慢，通常会导致：
+
+- 访问时间增加；
+- Setup/Hold 时间变化；
+- Clock-to-Q 延迟增加；
+- 输入缓冲器短路电流增加；
+- 动态功耗发生变化；
+- 边沿过慢时可能增加噪声和时序不确定性。
+
+因此，SRAM 的访问延迟不能只给出一个固定值，而需要表示为输入 Slew 和输出负载的函数。
+
+### 5.2 输出负载
+
+输出负载指 SRAM 输出端口所驱动的等效电容，通常以 fF 或 pF 表示。对于 SRAM 数据输出端 `Q`，输出负载主要来自：
+
+$$
+C_{\text{load}}=C_{\text{wire}}+\sum C_{\text{pin}}+C_{\text{parasitic}}
+$$
+
+其中：
+
+- $C_{\text{wire}}$：输出连线电容；
+- $C_{\text{pin}}$：后级逻辑单元输入引脚电容；
+- $C_{\text{parasitic}}$：过孔、耦合和其他寄生电容。
+
+例如，一个 SRAM 数据输出端驱动两个寄存器输入和一段布线：
+
+$$
+C_{\text{load}}=2C_{\text{FF-pin}}+C_{\text{wire}}
+$$
+
+假设每个寄存器输入电容为 3 fF，布线电容为 8 fF，则：
+
+$$
+C_{\text{load}}=2\times 3+8=14\,\text{fF}
+$$
+
+输出负载越大，SRAM 输出缓冲器充放电需要的时间越长，通常会造成：
+
+- Clock-to-Q 延迟增加；
+- 数据输出 Transition 增大；
+- 动态功耗增加；
+- 最大工作频率降低；
+- 输出波形完整性变差。
+
+输出延迟的近似关系可以写为：
+
+$$
+t_{\text{out}}\approx R_{\text{driver}}C_{\text{load}}
+$$
+
+输出切换功耗近似为：
+
+$$
+P_{\text{dynamic}}\approx\alpha C_{\text{load}}V_{\text{DD}}^2f
+$$
+
+其中：
+
+- $R_{\text{driver}}$：SRAM 输出驱动器的等效电阻；
+- $\alpha$：输出翻转活动率；
+- $V_{\text{DD}}$：电源电压；
+- $f$：工作频率。
+
+### 5.3 Slew 与 Load 的联合表征
+
+SRAM `.lib` 文件中的时序表通常是输入 Slew 和输出负载的二维查找表：
+
+$$
+t_{\text{delay}}=f\left(t_{\text{input slew}},C_{\text{output load}}\right)
+$$
+
+例如：
+
+| 输入 Slew | 输出负载 5 fF | 输出负载 20 fF | 输出负载 50 fF |
+| ---: | ---: | ---: | ---: |
+| 20 ps | 180 ps | 215 ps | 270 ps |
+| 50 ps | 195 ps | 235 ps | 295 ps |
+| 100 ps | 225 ps | 270 ps | 340 ps |
+
+这张表示例说明：输入边沿变慢或输出负载增大，访问延迟通常都会增加；两者同时恶化时延迟最大。
+
+在 Liberty 中通常表现为：
+
+```liberty
+cell_rise(delay_template) {
+    index_1("0.02, 0.05, 0.10");    /* input slew */
+    index_2("0.005, 0.020, 0.050"); /* output load */
+    values(...);
+}
+```
+
+常见约定为：
+
+- `index_1` 表示输入 Slew；
+- `index_2` 表示输出负载；
+- `cell_rise`、`cell_fall` 表示输出上升和下降延迟；
+- `rise_transition`、`fall_transition` 表示输出边沿时间。
+
+实际索引含义应以对应 `lu_table_template` 中的 `variable_1` 和 `variable_2` 定义为准，不能只依赖索引编号判断。
+
+### 5.4 在 SRAM Compiler 中的实际含义
+
+如果 SRAM Compiler 要求用户填写 Input Slew 和 Output Load，一般有两种用途：
+
+1. **生成单个性能估算结果**：Compiler 根据用户指定的输入边沿和输出负载，从内部表征模型中计算该 Macro 的访问时间、最大频率和功耗。
+2. **定义 `.lib` 表征范围**：Compiler 或表征工具在多个 Slew 和 Load 点上运行 SPICE 仿真，形成完整二维时序表。
+
+例如，可采用以下表征点：
+
+$$
+t_{\text{slew}}\in\{10,20,50,100,200\}\,\text{ps}
+$$
+
+$$
+C_{\text{load}}\in\{2,5,10,20,50\}\,\text{fF}
+$$
+
+由此形成 25 个 Slew-Load 组合点，用于时序和功耗表征。
+
+> 输入 Slew 描述前级逻辑以多快的边沿驱动 SRAM，输出负载描述 SRAM 输出端需要驱动多大的电容；两者共同决定 SRAM 在实际芯片环境中的访问延迟、输出边沿和动态功耗。
 
 ---
 
