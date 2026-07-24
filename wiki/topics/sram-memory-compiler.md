@@ -780,17 +780,17 @@ Clock ─X→ 内部控制
 
 概念上可表示为：
 
-\[
+$$
 CLK_{\mathrm{internal}}=CLK\land ME
-\]
+$$
 
 实际 Macro 通常使用专用 Clock-Gating Cell、Latch-Based Gating 或内部脉冲控制，以避免 Glitch 并满足测试要求，不能在外部简单使用普通组合与门代替。ME-Gating 的本质是活动门控或时钟门控，不切断 BitCell Array 或 Periphery 的电源，因此主要降低动态功耗：
 
-\[
+$$
 P_{\mathrm{dynamic}}\approx \alpha C_{\mathrm{eff}}V^2f
-\]
+$$
 
-ME-Gating 通过减少无效访问降低活动因子 \(\alpha\)。它通常不会显著降低 BitCell 和 Periphery 的静态漏电。
+ME-Gating 通过减少无效访问降低活动因子 $\alpha$。它通常不会显著降低 BitCell 和 Periphery 的静态漏电。
 
 ### 18.2 主要作用
 
@@ -809,9 +809,9 @@ ME-Gating 通过减少无效访问降低活动因子 \(\alpha\)。它通常不�
 
 多 Bank SRAM 可根据全局访问请求和 Bank Select 生成局部使能：
 
-\[
+$$
 ME_i=GlobalAccess\land BankSelect_i
-\]
+$$
 
 在带 Stall 的接口中，常见控制关系为：
 
@@ -984,21 +984,21 @@ Read Pipeline 在读数据路径中增加一个或多个寄存器级，以提高
 
 Bit Write 允许只更新一个 Word 中被选中的 bit，其余 bit 保持原值。启用 Bit Write 后，SRAM 仍按 Word 寻址；地址选择目标 Word，新增的写掩码选择该 Word 内允许写入的 bit。
 
-假设 SRAM 规格为 \(N_W \times N_B\)，其中 \(N_W\) 是 Word Depth，\(N_B\) 是 Word Width，则外部地址位宽仍为：
+假设 SRAM 规格为 $N_W \times N_B$，其中 $N_W$ 是 Word Depth，$N_B$ 是 Word Width，则外部地址位宽仍为：
 
-\[
+$$
 A=\left\lceil \log_2 N_W \right\rceil
-\]
+$$
 
-地址 `ADDR=k` 表示选择第 \(k\) 个 Word。若使用高有效 Bit Write Mask `BW[N_B-1:0]`，每个掩码位控制对应数据位是否更新：
+地址 `ADDR=k` 表示选择第 $k$ 个 Word。若使用高有效 Bit Write Mask `BW[N_B-1:0]`，每个掩码位控制对应数据位是否更新：
 
-\[
+$$
 Q_{\mathrm{new}}[i]=
 \begin{cases}
 D[i], & BW[i]=1 \\
 Q_{\mathrm{old}}[i], & BW[i]=0
 \end{cases}
-\]
+$$
 
 若产品采用低有效掩码，例如 `BWEN`，上述有效条件相反，必须以对应宏的 Databook 和 Verilog 模型为准。因此，Bit Write 的逻辑访问形式是“Word Address + Bit Mask”，而不是 Bit Address。
 
@@ -1030,7 +1030,7 @@ BWE[2] -> D[23:16]
 BWE[3] -> D[31:24]
 ```
 
-真正的 Bit Write 通常需要 \(N_B\) 个 Mask 位，而 Byte Write 通常需要 \(\lceil N_B/8 \rceil\) 个 Mask 位。常见引脚名包括 `WEM`、`BWE`、`BWEN`、`WEB`、`BEN`，但命名、映射顺序和有效电平没有统一标准。
+真正的 Bit Write 通常需要 $N_B$ 个 Mask 位，而 Byte Write 通常需要 $\lceil N_B/8 \rceil$ 个 Mask 位。常见引脚名包括 `WEM`、`BWE`、`BWEN`、`WEB`、`BEN`，但命名、映射顺序和有效电平没有统一标准。
 
 ### 23.1 内部电路影响
 
@@ -1148,7 +1148,7 @@ Column Redundancy 在每个 Bank 或 Subarray 中加入 Spare BitLine Pair、Spa
 - BitCell 列中的单点或多点缺陷；
 - BitLine Open/Short；
 - Column Mux 路径缺陷；
-- 某些局部 Sense/Write 路径缺陷。
+- 在 Spare Column 重映射边界内的局部列选择或布线缺陷。
 
 常见实现流程：
 
@@ -1184,18 +1184,112 @@ Row Redundancy 的代价包括 Spare Row 面积、Repair Compare 延迟、Fuse �
 
 ## 29. IO Redundancy
 
-IO Redundancy 使用 Spare I/O Slice 替换故障的逻辑数据位通路。一个 I/O Slice 通常包含与某个逻辑 bit 相关的 Column Mux、Global BitLine、Sense Amplifier、Write Driver、Output Driver 和 Mask Logic。
+IO Redundancy 使用 Spare I/O Slice 替换故障的逻辑数据位通路。与主要替换物理 BitCell Column 的 Column Redundancy 相比，IO Redundancy 的替换范围通常更大，可以同时绕过列组及其读写外围电路故障，但修复粒度、面积和时序开销也更大。
 
-IO Redundancy 可用于修复：
+### 29.1 IO Slice
 
+IO Slice 是 SRAM 内部负责一个逻辑数据位读写的重复通道。它不是芯片封装的 I/O Pad，通常包含：
+
+- 一组物理 BitCell Column；
+- Column Mux 和局部列选择；
+- Precharge 或局部 BitLine 控制；
+- Sense Amplifier；
+- Write Driver；
+- Write Mask 或 Bit Write 控制；
+- Local/Global Data Line；
+- 可选的 Output Latch、Pipeline、测试和冗余选择电路。
+
+以 `1024 × 32`、Column Mux Ratio 为 8 的 SRAM 为例，阵列通常包含 $32 \times 8=256$ 条物理列。每个逻辑数据位对应一个 IO Slice，每个 Slice 从 8 条物理列中选择一条连接到自己的 Sense Amplifier 和 Write Driver，因此共有 32 个正常 IO Slice。
+
+```text
+8 条 Physical Columns
+          ↓
+      Column Mux
+          ↓
+Sense Amplifier / Write Driver
+          ↓
+       D[i]/Q[i]
+```
+
+Byte Lane 通常由 8 个 IO Slice 组成；Byte Write Mask 可以同时控制这一组 Slice，Bit Write Mask 则分别控制每个 Slice。不同 Compiler 也可能把多 bit 分组称为一个 IO Slice，应以架构图为准。
+
+### 29.2 可修复故障
+
+IO Redundancy 通常可覆盖：
+
+- 对应 BitCell Column Group 或 BitLine 的故障；
+- Column Mux 和局部列选择故障；
 - Sense Amplifier 或 Write Driver 缺陷；
-- Global Data Line 缺陷；
-- 某个逻辑 I/O 对应的多个物理列组缺陷；
-- 列外围电路中难以用单列 Spare 修复的问题。
+- Local Data Line、Output Path 或局部 Write Mask 故障；
+- 其他局限在单个逻辑 I/O 通道内、难以用单条 Spare Column 修复的问题。
+
+IO Redundancy 不能修复所有 SRAM 故障。全局 Clock、公共控制、电源网络和全局数据总线故障通常不在单个 Spare IO 的覆盖范围内；Row Decoder 或 WordLine 故障通常需要 Row Redundancy；多个 Slice 同时故障而 Spare 数量不足时也无法完成修复。
+
+### 29.3 修复流程
+
+典型制造测试和修复流程为：
+
+1. MBIST 或 ATE 通过 March、Checkerboard 等算法检测读写故障，并定位持续失败的逻辑数据位或 I/O 通道。
+2. BIRA/Repair Analysis 判断故障是否适合使用 IO Spare，并选择 Faulty IO 与 Spare IO 的映射。
+3. 将 `Repair Enable`、Faulty IO 编号和 Spare 编号写入 eFuse、OTP、Laser Fuse、NVM 或可加载 Repair Register。
+4. 芯片上电时由 Fuse Controller 将 Repair Signature 装载到 SRAM Repair Register。
+5. Repair Mux 同时重映射读数据、写数据和 Write Mask 路径。
+6. MBIST 再次测试，确认修复后的 SRAM 满足功能要求。
+
+```text
+MBIST/ATE
+    ↓
+故障定位
+    ↓
+BIRA 选择 Spare IO
+    ↓
+Fuse / Repair Register
+    ↓
+Repair Mux 重映射
+    ↓
+重新测试
+```
+
+外部地址、数据宽度和逻辑数据位编号保持不变，修复对正常功能逻辑通常透明。
+
+### 29.4 重映射实现
+
+直接替换方式使用 Repair Mux 将故障逻辑位切换到 Spare IO：
+
+```text
+正常：D[2] ↔ IO Slice 2
+修复：D[2] ↔ Spare IO Slice
+```
+
+另一种实现是 Shift Repair：故障位置之后的 IO Slice 依次移动一个逻辑位置，由末端 Spare IO 补上。Shift 结构的布线较规则，但会改变多个内部 Slice 的逻辑映射。
+
+无论采用哪种方式，读写路径都必须使用同一映射：
+
+- 读取时，Spare Sense Amplifier 的输出送到原逻辑位 `Q[i]`。
+- 写入时，原逻辑位 `D[i]` 送到 Spare Write Driver。
+- Byte/Bit Write Mask、ECC/Parity、MBIST Compare、Test Data 和 Pipeline 路径必须同步重映射。
+
+如果只重映射读路径而未重映射写数据或 Mask，会出现能够读取但写入错误位置的问题。Repair Mux 还可能增加 Read Delay、Write Setup/Hold 和数据路径负载，因此 Liberty 模型应覆盖最差修复配置，或者提供相应的 Repaired Timing View。
+
+### 29.5 与 Column Redundancy 的区别
+
+| 对比项 | Column Redundancy | IO Redundancy |
+| --- | --- | --- |
+| 典型替换对象 | 单条物理列、差分列对或 Column Group | 完整 IO Slice |
+| Column Mux | 通常继续复用原路径 | 通常由 Spare Slice 提供或随 Slice 重映射 |
+| Sense Amplifier/Write Driver | 通常不替换 | 通常替换 |
+| 修复粒度 | 较细 | 较粗 |
+| 主要覆盖 | BitCell、BL/BLB 和局部列故障 | 列组、SA、Write Driver、Mux 和局部数据通路故障 |
+| 面积与布线开销 | 相对较小 | 相对较大 |
+| Repair Mux 时序影响 | 通常较小 | 通常较大 |
+
+例如 Sense Amplifier 故障时，仅替换 BitCell Column 后仍会经过原来的故障 Sense Amplifier，普通 Column Redundancy 通常无法修复；IO Redundancy 可以将读写路径切换到包含 Spare Sense Amplifier 和 Spare Write Driver 的完整通道。
+
+因此，IO Redundancy 的故障覆盖通常比 Column Redundancy 更全面，但两者是互补关系，而不是简单的高低级替代：单条物理列故障优先使用粒度更细的 Column Spare，外围 I/O 通道故障则更适合使用 IO Spare。
 
 不同厂商对 Column Redundancy 和 IO Redundancy 的边界定义并不一致：有些产品把替换完整 I/O Slice 也称为 Column Redundancy。必须依据 Repair Granularity、Fuse Map 和版图说明判断。
 
-### 29.1 Redundancy 与 ECC 的区别
+### 29.6 Redundancy 与 ECC 的区别
 
 - Redundancy 修复制造缺陷并形成永久或可加载映射，主要提高生产良率。
 - ECC 在运行时检测或纠正瞬态 Soft Error 和部分永久错误，主要提高现场可靠性。

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repair Quartz Math"
+  short_description: "扫描全部 Wiki 页面并修复 Quartz 无法渲染的公式"
+  default_prompt: "使用 $repair-quartz-math 扫描并修复 wiki 中无法被 Quartz 正常渲染的公式。"
