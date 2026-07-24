@@ -116,7 +116,8 @@ When updating wiki content:
 
 * Prefer updating existing pages instead of creating duplicates
 * Update wiki/index.md if discoverability changes
-* Append a concise entry to wiki/log.md
+* Append a concise entry to the current monthly file under wiki/logs/
+* After changing Markdown files under wiki/, run `node scripts/update-wiki-index.mjs`
 
 If modifying more than 10 files, ask for confirmation first.
 
@@ -161,4 +162,3 @@ A task is complete when:
 * Required wiki pages are updated
 * Protected blocks are preserved
 * Important metadata and links remain valid
-

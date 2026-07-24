@@ -30,6 +30,9 @@ jobs:
           node-version: 24
           cache: npm
           cache-dependency-path: site/package-lock.json
+      - name: Update wiki index
+        run: node scripts/update-wiki-index.mjs
+        working-directory: .
       - name: Cache Quartz plugins
         uses: actions/cache@v4
         with:

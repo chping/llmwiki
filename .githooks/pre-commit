@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+
+repo_root=$(git rev-parse --show-toplevel)
+cd "$repo_root"
+
+if git diff --cached --name-only --diff-filter=ACMR -- wiki/ | grep -q '\.md$'; then
+  node scripts/update-wiki-index.mjs
+  git add wiki/index.md
+fi

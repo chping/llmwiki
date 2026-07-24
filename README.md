@@ -30,6 +30,14 @@
 - **outputs**：基于 wiki 内容产出的其他内容，例如 PPT
 - **.idx**：给 AI 大模型 query 用的关键词索引数据目录（暂时没有用，wiki 文件少的时候使用 grep 搜索即可）
 
+### 自动更新首页
+
+运行 `node scripts/update-wiki-index.mjs` 会根据页面 frontmatter 更新 `wiki/index.md` 中的统计信息和最近 5 条内容。仓库的 pre-commit hook 和 GitHub Pages 部署流程都会自动执行该脚本。首次克隆后运行以下命令启用提交钩子：
+
+```bash
+git config core.hooksPath .githooks
+```
+
 ## Scenarios
 
 ### 读文献
@@ -230,5 +238,4 @@ A：你输出的答复。
 - 约束：
   - 采用“Monthly log rotation”的方式进行追加，不允许覆盖或删除已有日志文件
   - 只能追加，不可以修改已有日志记录
-
 
