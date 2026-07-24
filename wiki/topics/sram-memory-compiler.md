@@ -12,7 +12,7 @@ summary: SRAM Memory Compiler 的容量配置、阵列组织、输入 Slew、输
 zotero:
   item_key:
   citation_key:
-source_uri: /Users/chengping/workspace/obsync/2-Subject/OpenXRAM/pub/SRAM存储器编译器常见功能和配置项说明_补全修订版.md
+source_uri:
 ---
 
 # SRAM Memory Compiler 功能与配置
@@ -188,7 +188,7 @@ BitCell 是 SRAM 阵列中存储 1 bit 数据的最小核心单元。Compiler �
 
 ---
 
-## 4. Frequency
+## 4. Target Frequency / Cycle Time
 
 ### 4.1 Compiler 中的 Frequency 配置含义
 
@@ -227,7 +227,7 @@ $$
 
 ---
 
-## 5. Clock Frequency (worst-case)
+## 5. Characterized Maximum Clock Frequency
 
 Worst-Case Clock Frequency 指在指定最差时序 Corner、输入 Slew、输出负载、工作模式和约束条件下，SRAM 能满足全部时序要求的最高时钟频率。可近似表示为：
 
@@ -582,11 +582,11 @@ Center Decode 通常是物理实现选项，对逻辑接口透明。部分厂商
 
 ## 12. Power Gating
 
-Power Gating 通过关闭阵列或外围电路的电源、施加 [[sram-source-bias|Source Bias]] 或降低 Retention 电压，减少待机漏电。SRAM 的低功耗状态必须同时考虑数据是否保留、供电域状态、唤醒时间、输出状态和进入/退出时序。
+Power Gating 通过在供电路径中加入 Header/Footer Power Switch，切断或隔离 Array、Periphery、Bank 或整个 Macro 的供电，从而降低待机漏电。[[sram-source-bias|Source Bias]] 和降低 Retention Voltage 是可以与 Power Gating 组合使用的其他低功耗技术，但不属于 Power Gating 本身。SRAM 的低功耗状态必须同时考虑数据是否保留、供电域状态、唤醒时间、输出状态和进入/退出时序。
 
 ### 12.1 通用功耗状态
 
-| 状态 | BitCell Array | Periphery | 数据保持 | 访问能力 | 唤醒时间趋势 | 漏电趋势 |
+| 状态 | BitCell Array | Periphery | 数据保持 | 访问能力 | 唤醒时间趋势 | 总功耗趋势 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Active | On | On | 是 | 可读写 | 无 | 最高 |
 | Standby / ME Off | On | On，但无切换 | 是 | 不访问 | 极短 | 较高 |
@@ -734,11 +734,11 @@ Periphery Off 常与 Dual Rail 配合，也可以由 Macro 内部 Power Switch �
 
 | 概念 | 所属维度 | 核心含义 | 数据是否保持 |
 | --- | --- | --- | --- |
-| Power Gating | 电路实现手段 | 使用电源开关切断或限制 Array、Periphery 或整个 Macro 的供电 | 取决于关闭范围 |
+| Power Gating | 电路实现手段 | 使用电源开关切断或隔离 Array、Periphery 或整个 Macro 的供电 | 取决于关闭范围 |
 | Dual Rail | 电源网络架构 | Array 与 Periphery 使用相对独立的供电 Rail | 本身不决定 |
 | Periphery Off | 低功耗状态 | 关闭外围电路，同时使 Array 继续保持数据 | 通常保持 |
 
-Power Gating 可以应用于 Array、Periphery、单个 Bank 或整个 Macro。关闭整个 Array 通常会丢失数据；只关闭 Periphery 而维持 Array 供电，则可形成数据保持型低功耗状态。Dual Rail 把 `VDD_ARRAY` 与 `VDD_PERI` 分开，为独立调压或断电提供条件，但两条 Rail 也可以始终开启，因此 Dual Rail 不等同于 Power Gating。Periphery Off 描述的是结果状态，其内部实现既可能是真正切断 Periphery Rail，也可能只是 Clock/ME Gating、[[sram-source-bias|Source Bias]] 或降低供电电压。
+Power Gating 可以应用于 Array、Periphery、单个 Bank 或整个 Macro。关闭整个 Array 通常会丢失数据；只关闭 Periphery 而维持 Array 供电，则可形成数据保持型低功耗状态。Dual Rail 把 `VDD_ARRAY` 与 `VDD_PERI` 分开，为独立调压或断电提供条件，但两条 Rail 也可以始终开启，因此 Dual Rail 不等同于 Power Gating。严格意义上的 Periphery Power Off 表示外围供电被切断；如果外围仍然供电，只通过 Clock/ME Gating 停止活动，则更准确的名称是 Periphery Inactive 或 ME Off，而不是 Periphery Power Off。部分厂商会使用更宽泛的模式名称，仍需根据电源状态表确认实际实现。
 
 典型组合为：
 
@@ -801,7 +801,7 @@ ME-Gating 通过减少无效访问降低活动因子 $\alpha$。它通常不会�
 
 ### 18.3 典型使用场景
 
-- Cache 或 Register File：只有命中访问请求的 Bank 使能，其他 Bank 保持 Gated。
+- Cache 或 Register File：只有地址选择或访问请求对应的 Bank/Way 使能，其他 Bank 保持 Gated；是否能在 Cache Hit 确认前关闭 Data Array 取决于具体访问架构。
 - DMA、视频行缓存、网络 Packet Buffer 和 DSP Scratchpad：数据到达时访问，其余周期关闭内部活动。
 - AI Accelerator 的 Weight/Activation Buffer：根据 Tile、PE 或数据流阶段选择性启用局部 SRAM。
 - Always-On SRAM：不能频繁断电，但可在没有访问时降低动态功耗并保持快速响应。
@@ -835,7 +835,7 @@ ME-Gating 适合高频、短暂、不可预测的空闲；Power Gating 适合持
 | 特性 | ME-Gating | Power Gating |
 | --- | --- | --- |
 | 主要降低 | 动态功耗 | 漏电功耗，部分情况下也降低动态功耗 |
-| 是否切断电源 | 通常否 | 是或降低电压/施加偏置 |
+| 是否切断电源 | 否 | 是，具体取决于 Power Gating 的作用范围 |
 | 数据保持 | 是 | 取决于模式 |
 | 唤醒延迟 | 通常极短 | 从短到很长 |
 | 是否需要电源时序 | 通常不需要 | 需要 |
@@ -960,8 +960,8 @@ Read Pipeline 在读数据路径中增加一个或多个寄存器级，以提高
 
 典型行为：
 
-- **Pipeline Off**：地址和读使能在时钟沿被采样，数据在同一周期内经过 Clock-to-Q 延迟输出，通常被系统称为 1-cycle read latency。
-- **Pipeline On**：内部读结果先进入 Pipeline Register，再在后续时钟沿输出，相对于基础配置增加一个或多个完整时钟周期。
+- **Pipeline Off**：地址和读使能在边沿 $n$ 被采样，数据在同一边沿之后经过 Clock-to-Q 延迟输出，不增加额外的输出寄存器级。部分系统将其称为 1-cycle read latency，另一些系统称为 edge-to-output 或 0 个额外周期。
+- **Pipeline On**：地址和读使能在边沿 $n$ 被采样，内部读结果经过一个或多个 Pipeline Register 后，在边沿 $n+L$ 之后输出，其中 $L$ 是新增的流水级数。
 
 优点：
 
@@ -1147,8 +1147,7 @@ Column Redundancy 在每个 Bank 或 Subarray 中加入 Spare BitLine Pair、Spa
 
 - BitCell 列中的单点或多点缺陷；
 - BitLine Open/Short；
-- Column Mux 路径缺陷；
-- 在 Spare Column 重映射边界内的局部列选择或布线缺陷。
+- 在 Spare Column 重映射范围内的 Column Mux Input Leg、局部 Column Select 或列布线缺陷。
 
 常见实现流程：
 
@@ -1158,6 +1157,8 @@ Column Redundancy 在每个 Bank 或 Subarray 中加入 Spare BitLine Pair、Spa
 4. 地址访问时 Column Select 网络自动重映射。
 
 Column Spare 的修复粒度可能是单个物理列、一对差分列、一个 Mux Group 或多个相邻列。Spare 数量越多，面积和路由开销越大；Repair Mux 也可能增加访问延迟。
+
+如果故障发生在多个正常列共享的 Mux Output、Sense Amplifier、Write Driver 或 Global Data Line，普通 Column Redundancy 通常无法绕过，应根据实现考虑 IO Redundancy。
 
 ---
 
@@ -1175,10 +1176,12 @@ Row Redundancy 在每个 Bank 或 Subarray 中加入 Spare WordLine/Spare Row，
 
 - 某一行的 BitCell 缺陷；
 - WordLine Open/Short；
-- Row Decoder 或局部 WordLine Driver 缺陷；
+- Final Row Decode Branch 或局部 WordLine Driver 缺陷；
 - 在 Repair 粒度覆盖范围内的耦合缺陷。
 
 Row Redundancy 的代价包括 Spare Row 面积、Repair Compare 延迟、Fuse 资源和 BISR 复杂度。Spare Row 通常按 Bank 分配，不能跨 Bank 任意共享。
+
+共享 Predecoder、全局 Row Control 或同时影响多条 WordLine 的故障通常不在单条 Spare Row 的修复范围内。
 
 ---
 
@@ -1199,7 +1202,7 @@ IO Slice 是 SRAM 内部负责一个逻辑数据位读写的重复通道。它�
 - Local/Global Data Line；
 - 可选的 Output Latch、Pipeline、测试和冗余选择电路。
 
-以 `1024 × 32`、Column Mux Ratio 为 8 的 SRAM 为例，阵列通常包含 $32 \times 8=256$ 条物理列。每个逻辑数据位对应一个 IO Slice，每个 Slice 从 8 条物理列中选择一条连接到自己的 Sense Amplifier 和 Write Driver，因此共有 32 个正常 IO Slice。
+以 Single-Bank、无 ECC 和 Redundancy 的 `1024 × 32` SRAM 为例，当 Column Mux Ratio 为 8 时，该 Bank 通常包含 $32 \times 8=256$ 条物理列。每个逻辑数据位对应一个 IO Slice，每个 Slice 从 8 条物理列中选择一条连接到自己的 Sense Amplifier 和 Write Driver，因此共有 32 个正常 IO Slice。多 Bank 结构通常在每个 Bank 中分别组织这些列，不能把 256 直接视为整个 Macro 的物理列总数。
 
 ```text
 8 条 Physical Columns
@@ -1218,7 +1221,7 @@ Byte Lane 通常由 8 个 IO Slice 组成；Byte Write Mask 可以同时控制�
 IO Redundancy 通常可覆盖：
 
 - 对应 BitCell Column Group 或 BitLine 的故障；
-- Column Mux 和局部列选择故障；
+- 局限在该 IO Slice 内的 Column Mux、共享 Mux Output 和局部列选择故障；
 - Sense Amplifier 或 Write Driver 缺陷；
 - Local Data Line、Output Path 或局部 Write Mask 故障；
 - 其他局限在单个逻辑 I/O 通道内、难以用单条 Spare Column 修复的问题。
@@ -1276,7 +1279,7 @@ Repair Mux 重映射
 | 对比项 | Column Redundancy | IO Redundancy |
 | --- | --- | --- |
 | 典型替换对象 | 单条物理列、差分列对或 Column Group | 完整 IO Slice |
-| Column Mux | 通常继续复用原路径 | 通常由 Spare Slice 提供或随 Slice 重映射 |
+| Column Mux | 通常只能绕过被重映射的 Input Leg 或局部 Select | 通常由 Spare Slice 提供或随 Slice 重映射 |
 | Sense Amplifier/Write Driver | 通常不替换 | 通常替换 |
 | 修复粒度 | 较细 | 较粗 |
 | 主要覆盖 | BitCell、BL/BLB 和局部列故障 | 列组、SA、Write Driver、Mux 和局部数据通路故障 |
@@ -1477,28 +1480,15 @@ $$
 
 ---
 
-## 33. Word-Write Mask
+## 33. Write Mask 配置检查
 
-Word-Write Mask 是对写入粒度控制的总称，可包括 Global Word Enable、Byte Mask、Sub-Word Mask 和 Bit Mask。地址始终选择目标 Word，Mask 决定该 Word 内实际更新的数据组；详细原理参见“23. Bit Write”。
+Write Mask 的寻址方式、Bit/Byte/Group 粒度、数据位映射和内部实现见“23. Bit Write”。选用具体 Compiler 配置时，还应确认：
 
-以 32-bit SRAM、4 个 Byte Mask 为例：
-
-```text
-WM[0] -> D[7:0]
-WM[1] -> D[15:8]
-WM[2] -> D[23:16]
-WM[3] -> D[31:24]
-```
-
-若 `WM[1]` 被 Mask，则写周期中 `D[15:8]` 不更新，原内容保持。实际产品可能使用低有效 `WEMN/BWEN`，上述仅为分组示例。
-
-应确认以下行为：
-
-- Mask 的有效电平；
-- Mask 与数据位的映射顺序；
-- Mask 全关闭时是否仍执行内部访问；
-- Write Through 模式下被 Mask bit 的 Q 输出行为；
-- 非 8 倍数字宽时最后一组 Mask 的处理；
+- Compiler 使用的是 Global Write Enable、Byte Mask、Sub-Word Mask 还是 Bit Mask；
+- Mask 的有效电平及其与数据位的映射顺序；
+- Mask 全部禁止写入时是否仍执行内部访问；
+- Write Through 模式下未写数据位的 `Q` 行为；
+- 非 8 倍数字宽时最后一个 Byte Group 的处理；
 - ECC SRAM 的部分写是否自动执行 Read-Modify-Write。
 
 ---
@@ -1734,14 +1724,14 @@ Read Disturb Test 模式可延长 WordLine、重复读取或改变 Sense 时序�
 
 ## 40. 参考资料与适用范围
 
-本文的通用定义和选项分类参考了公开的 Memory Compiler 产品资料、开源 SRAM Compiler 文档、SoC SRAM 集成文档以及常见 CMOS SRAM 设计方法，主要包括：
+本文由内部整理稿与以下公开资料综合整理。网页内容访问日期均为 2026-07-24：
 
-- M31 Technology Memory Compiler 产品功能说明；
-- Silvaco Single & Dual Port SRAM Compiler 的功耗模式说明；
-- Dolphin Technology Memory Compiler 的 Write Mask、Write Through、Redundancy、Dual Rail 和多种输出选项说明；
-- OpenRAM 的 SRAM Layout、Netlist、Timing/Power Model 和 PnR View 生成说明；
-- NVIDIA NVDLA Integration Guide 中的 SRAM Port、Retention、Sleep 和 Margin Control 示例；
-- IHP Open PDK 中 SRAM 的 Liberty、LEF、GDS、CDL/SPICE 和 Verilog View 组织方式；
+- [M31 Technology Memory Compiler](https://www.m31tech.com/zh-hant/product/memory-compiler/)：Memory Compiler 产品类型与配置范围。
+- [Silvaco Single & Dual Port SRAM Compilers](https://silvaco.com/design-ip/foundation-ip/embedded-memory-compilers/single-dual-port-sram-compiler/)：低功耗模式、Dual Supply Rail、Write Mask 和 BIST/R 功能。
+- [Dolphin Technology Memory Compilers](https://www.dolphin-ic.com/products/memory/umc_130sp_mem.html)：Write Mask、Write Through、Row/Column I/O Redundancy、输出驱动和物理配置选项。
+- [OpenRAM](https://openram.org/) 与 [Porting to a New Technology](https://openram.org/PORTING.html)：SRAM Layout、Netlist、Timing/Power Model、PnR View 和工艺移植结构。
+- [NVIDIA NVDLA Integrator’s Manual](https://nvdla.org/hw/v1/integration_guide.html)：SRAM Port、Power Gating、Retention、Margin Control 和系统集成示例。
+- [IHP Open PDK](https://github.com/IHP-GmbH/IHP-Open-PDK)：SRAM 的 Liberty、LEF、GDSII、CDL/SPICE 和 Verilog View 组织。
 - 标准 CMOS SRAM BitCell、Array、Sense Amplifier、Self-Timing、Read/Write Assist 和冗余设计方法。
 
 本文不替代受 NDA 约束的具体 Compiler User Guide。涉及以下内容时，必须回到对应产品手册：
