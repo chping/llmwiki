@@ -43,31 +43,31 @@ source_uri: /Users/chengping/workspace/obsync/2-Subject/OpenXRAM/pub/SRAM存储�
 
 SRAM 的逻辑容量为：
 
-\[
+$$
 \text{Capacity}_{bit}=D\times W
-\]
+$$
 
 若字宽是 8 的整数倍，则字节容量为：
 
-\[
+$$
 \text{Capacity}_{byte}=D\times W/8
-\]
+$$
 
 在常见的“按深度划分 Bank、按列复用折叠阵列”的结构中，且 `D` 可被 `B×M` 整除时：
 
-\[
+$$
 R=\frac{D}{B\times M}
-\]
+$$
 
-\[
+$$
 C=W\times M
-\]
+$$
 
 因此全部 Bank 的有效 BitCell 数量满足：
 
-\[
+$$
 B\times R\times C=D\times W
-\]
+$$
 
 实际物理阵列还可能加入冗余行、冗余列、ECC/Parity 位、Dummy Cell、Replica Cell 和边界单元，因此物理 BitCell 数量通常大于逻辑容量。
 
@@ -77,15 +77,15 @@ B\times R\times C=D\times W
 
 外部逻辑地址位宽为：
 
-\[
+$$
 A=\lceil\log_2 D\rceil
-\]
+$$
 
 当 `D`、`B`、`M` 都是 2 的幂并采用常见内部划分时：
 
-\[
+$$
 A=\log_2 B+\log_2 R+\log_2 M
-\]
+$$
 
 其中三部分分别用于 Bank 选择、物理行选择和 Column Mux 选择。增大 Column Mux 只会把一部分内部行地址转换为列选择地址，**不会减少 SRAM 的外部逻辑地址位宽**。
 
@@ -211,9 +211,9 @@ BitCell 是 SRAM 阵列中存储 1 bit 数据的最小核心单元。Compiler �
 
 频率不能单独确定 SRAM 功耗。动态功耗的近似关系为：
 
-\[
+$$
 P_{dynamic}\approx \alpha C_{eff}V^2f
-\]
+$$
 
 其中：
 
@@ -230,9 +230,9 @@ P_{dynamic}\approx \alpha C_{eff}V^2f
 
 Worst-Case Clock Frequency 指在指定最差时序 Corner、输入 Slew、输出负载、工作模式和约束条件下，SRAM 能满足全部时序要求的最高时钟频率。可近似表示为：
 
-\[
+$$
 f_{max,macro}=\frac{1}{t_{CYC,min}(P,V,T,load,slew,mode)}
-\]
+$$
 
 其中 `tCYC,min` 是 Macro 的最小时钟周期。实际限制可能来自：
 
@@ -249,9 +249,9 @@ f_{max,macro}=\frac{1}{t_{CYC,min}(P,V,T,load,slew,mode)}
 
 系统可用频率还需满足 SRAM 之外的数据路径：
 
-\[
+$$
 T_{CLK}\ge t_{CQ,SRAM}+t_{logic}+t_{setup,next}+t_{uncertainty}
-\]
+$$
 
 因此，Macro Fmax 与 SoC 最终 Fmax 是相关但不同的指标。
 
@@ -460,9 +460,9 @@ Power Gating 通过关闭阵列或外围电路的电源、施加源极偏置或�
 
 Power Gating 存在进入和唤醒能量。只有休眠时间足够长时，节省的漏电能量才超过模式切换能量：
 
-\[
+$$
 t_{break-even}\approx\frac{E_{entry}+E_{wake}}{P_{standby}-P_{sleep}}
-\]
+$$
 
 系统电源管理策略应根据实际空闲时长选择 Standby、Light Sleep、Retention 或 Shutdown。
 
@@ -1054,9 +1054,9 @@ CDL/SPICE Netlist 描述晶体管级或层次化电路连接，用于：
 
 Aspect Ratio 表示 Macro 外框宽度与高度的比值。本文定义：
 
-\[
+$$
 AR=\frac{W_{macro}}{H_{macro}}
-\]
+$$
 
 有些工具使用相反定义，使用前应确认。
 

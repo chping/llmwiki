@@ -1,0 +1,4 @@
+interface:
+  display_name: "Publish Quartz Site"
+  short_description: "Commit, push, and publish the Quartz wiki site."
+  default_prompt: "提交并发布当前 llmwiki Quartz 站点"
