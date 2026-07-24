@@ -879,7 +879,35 @@ Read Pipeline 在读数据路径中增加一个或多个寄存器级，以提高
 
 ## 23. Bit Write
 
-Bit Write 允许只更新一个 Word 中被选中的 bit，其余 bit 保持原值。硬件上通常为每个 I/O Slice 提供独立 Write Driver Enable。
+Bit Write 允许只更新一个 Word 中被选中的 bit，其余 bit 保持原值。启用 Bit Write 后，SRAM 仍按 Word 寻址；地址选择目标 Word，新增的写掩码选择该 Word 内允许写入的 bit。
+
+假设 SRAM 规格为 \(N_W \times N_B\)，其中 \(N_W\) 是 Word Depth，\(N_B\) 是 Word Width，则外部地址位宽仍为：
+
+\[
+A=\left\lceil \log_2 N_W \right\rceil
+\]
+
+地址 `ADDR=k` 表示选择第 \(k\) 个 Word。若使用高有效 Bit Write Mask `BW[N_B-1:0]`，每个掩码位控制对应数据位是否更新：
+
+\[
+Q_{\mathrm{new}}[i]=
+\begin{cases}
+D[i], & BW[i]=1 \\
+Q_{\mathrm{old}}[i], & BW[i]=0
+\end{cases}
+\]
+
+若产品采用低有效掩码，例如 `BWEN`，上述有效条件相反，必须以对应宏的 Databook 和 Verilog 模型为准。因此，Bit Write 的逻辑访问形式是“Word Address + Bit Mask”，而不是 Bit Address。
+
+以 `1024 × 32` SRAM 为例，地址位宽仍为 10 bit，写数据为 `D[31:0]`，Bit Write Mask 为 `BW[31:0]`：
+
+```text
+ADDR = 10'd25
+D    = 32'hA5A5_F00F
+BW   = 32'h0000_00FF
+```
+
+若 `BW` 高有效，则本次访问选中第 25 个 Word，只更新 `D[7:0]`，其余 24 bit 保持原值。
 
 常见粒度：
 
@@ -890,7 +918,28 @@ Bit Write 允许只更新一个 Word 中被选中的 bit，其余 bit 保持原�
 | Half-Word / Group Write | 每 16 bit 或指定组 1 个 | DSP、宽数据缓存 |
 | Bit Write | W 个 | Tag、状态位、寄存器文件和精细更新 |
 
-常见引脚名包括 `WEM`、`BWE`、`BWEN`、`WEB`、`BEN`，有效电平可能为高或低。
+对于 32-bit Word，Byte Write 通常只需要 4 个 Mask 位，每个 Mask 控制 8 bit：
+
+```text
+BWE[0] -> D[7:0]
+BWE[1] -> D[15:8]
+BWE[2] -> D[23:16]
+BWE[3] -> D[31:24]
+```
+
+真正的 Bit Write 通常需要 \(N_B\) 个 Mask 位，而 Byte Write 通常需要 \(\lceil N_B/8 \rceil\) 个 Mask 位。常见引脚名包括 `WEM`、`BWE`、`BWEN`、`WEB`、`BEN`，但命名、映射顺序和有效电平没有统一标准。
+
+### 23.1 内部电路影响
+
+Bit Write 通常不改变外部 Word 地址译码，仍由 Row、Bank 和 Column Mux 逻辑选中目标 Word。变化主要发生在写数据通路：
+
+- 增加 Bit Write Mask 输入及其时序约束；
+- 增加每列或每组列的局部 Write Enable；
+- 仅使能被选中 bit 对应的 Write Driver，未选中的 BitLine 不执行有效写入；
+- 增加 Mask 布线、列选择和局部写控制复杂度；
+- 可能增加面积、动态功耗和写延迟。
+
+部分 Macro 直接在列写驱动端提供独立 Bit Mask，不需要显式的 Read-Modify-Write（RMW）周期。另一些架构，特别是带 ECC 的部分写入，会先读取原 Word、合并未修改位与新数据、重新计算 ECC，再写回完整 Word。RMW 是内部完成还是需要系统外部完成，取决于 Compiler 实现和接口定义。
 
 设计注意事项：
 
@@ -1233,7 +1282,7 @@ $$
 
 ## 33. Word-Write Mask
 
-Word-Write Mask 是对写入粒度的总称，可包括 Global Word Enable、Byte Mask、Sub-Word Mask 和 Bit Mask。其功能与“Bit Write”章节一致，但项目接口通常按总线协议进行分组。
+Word-Write Mask 是对写入粒度控制的总称，可包括 Global Word Enable、Byte Mask、Sub-Word Mask 和 Bit Mask。地址始终选择目标 Word，Mask 决定该 Word 内实际更新的数据组；详细原理参见“23. Bit Write”。
 
 以 32-bit SRAM、4 个 Byte Mask 为例：
 
