@@ -623,6 +623,8 @@ $$
 - 不同供电域应在 UPF 中声明 Supply Set、Power State、Isolation 和 Power Sequence。
 - Macro 的 Power Ring、Pin、IR/EM 和 Inrush Current 必须按最大活动和唤醒电流签核。
 
+Power Gating、Dual Rail 和 Periphery Off 的概念边界及组合方式见“17.1 Power Gating、Dual Rail 与 Periphery Off 的关系”。
+
 ---
 
 ## 13. LS - Light Sleep
@@ -708,6 +710,8 @@ Dual Rail SRAM 将 BitCell Array/Core 与 Periphery 连接到不同的电源域�
 - Liberty 文件中的 `pg_pin`、Operating Condition 和 Power State 必须与连接方式一致。
 - 测试模式、Assist 和 Margin Control 可能对两个 Rail 有额外限制。
 
+Dual Rail 只提供 Array 与 Periphery 独立供电的架构条件，并不表示任意一条 Rail 必然执行 Power Gating；三者关系见“17.1 Power Gating、Dual Rail 与 Periphery Off 的关系”。
+
 ---
 
 ## 17. Periphery Off
@@ -724,13 +728,109 @@ Periphery Off 指关闭 Decoder、Precharge、Sense Amplifier、Write Driver、C
 
 Periphery Off 常与 Dual Rail 配合，也可以由 Macro 内部 Power Switch 实现。
 
+### 17.1 Power Gating、Dual Rail 与 Periphery Off 的关系
+
+三个概念不属于同一个分类维度：
+
+| 概念 | 所属维度 | 核心含义 | 数据是否保持 |
+| --- | --- | --- | --- |
+| Power Gating | 电路实现手段 | 使用电源开关切断或限制 Array、Periphery 或整个 Macro 的供电 | 取决于关闭范围 |
+| Dual Rail | 电源网络架构 | Array 与 Periphery 使用相对独立的供电 Rail | 本身不决定 |
+| Periphery Off | 低功耗状态 | 关闭外围电路，同时使 Array 继续保持数据 | 通常保持 |
+
+Power Gating 可以应用于 Array、Periphery、单个 Bank 或整个 Macro。关闭整个 Array 通常会丢失数据；只关闭 Periphery 而维持 Array 供电，则可形成数据保持型低功耗状态。Dual Rail 把 `VDD_ARRAY` 与 `VDD_PERI` 分开，为独立调压或断电提供条件，但两条 Rail 也可以始终开启，因此 Dual Rail 不等同于 Power Gating。Periphery Off 描述的是结果状态，其内部实现既可能是真正切断 Periphery Rail，也可能只是 Clock/ME Gating、[[sram-source-bias|Source Bias]] 或降低供电电压。
+
+典型组合为：
+
+```text
+Dual Rail
+├── VDD_ARRAY：保持供电或降低到 Retention Voltage
+└── VDD_PERI：通过 Power Gating 关闭
+                    ↓
+              Periphery Off
+```
+
+其他可能组合包括：
+
+- Single Rail + Periphery Off：Macro 使用内部局部电源开关或隔离结构关闭外围。
+- Dual Rail + 无 Power Gating：Array 和 Periphery 始终供电，但使用不同工作电压。
+- Power Gating + Shutdown：Array 和 Periphery 均关闭，以最低漏电换取数据丢失和更长唤醒时间。
+- Dual Rail + Retention：Periphery 关闭，Array Rail 降至不低于 Data Retention Voltage 的电压。
+
+项目签核时不能仅根据 `Periphery Off`、`Deep Sleep` 或 `Retention` 等模式名称推断实现。必须检查 Databook 的电源连接、状态真值表、数据保持行为、Isolation、合法电压关系、进入/退出顺序、唤醒时间以及 Inrush Current。
+
 ---
 
 ## 18. ME-Gating
 
 ME-Gating 通常表示 Memory Enable Gating，即在 Memory Enable/Chip Enable 非活动时，门控 SRAM 内部时钟和动态控制路径，避免不必要的 Precharge、Decoder、WordLine、Sense Amplifier 和输出翻转。
 
-其本质通常是**活动门控或时钟门控**，与切断电源的 Power Gating 不同：
+### 18.1 工作原理
+
+同步 SRAM 即使地址和数据没有变化，只要时钟继续进入内部控制路径，仍可能触发地址锁存、译码、BitLine 预充电、WordLine 驱动、Sense Amplifier、Write Driver、Self-Timing 或输出寄存器切换。ME-Gating 在没有有效访问时阻止这些动作：
+
+```text
+ME 有效：
+Clock → 内部控制 → SRAM 正常访问
+
+ME 无效：
+Clock ─X→ 内部控制
+         不译码、不激活 WordLine、不启动读写
+```
+
+概念上可表示为：
+
+\[
+CLK_{\mathrm{internal}}=CLK\land ME
+\]
+
+实际 Macro 通常使用专用 Clock-Gating Cell、Latch-Based Gating 或内部脉冲控制，以避免 Glitch 并满足测试要求，不能在外部简单使用普通组合与门代替。ME-Gating 的本质是活动门控或时钟门控，不切断 BitCell Array 或 Periphery 的电源，因此主要降低动态功耗：
+
+\[
+P_{\mathrm{dynamic}}\approx \alpha C_{\mathrm{eff}}V^2f
+\]
+
+ME-Gating 通过减少无效访问降低活动因子 \(\alpha\)。它通常不会显著降低 BitCell 和 Periphery 的静态漏电。
+
+### 18.2 主要作用
+
+- 在空闲周期停止 Decoder、WordLine、BitLine 和 Sense/Write 路径的无效切换。
+- 降低动态功耗、峰值电流、电源噪声和不必要的 Read Disturb。
+- 在保持供电和数据的同时提供接近零或一个时钟周期的恢复延迟。
+- 对多 Bank SRAM 只使能目标 Bank，避免整块 Memory 同时活动。
+
+### 18.3 典型使用场景
+
+- Cache 或 Register File：只有命中访问请求的 Bank 使能，其他 Bank 保持 Gated。
+- DMA、视频行缓存、网络 Packet Buffer 和 DSP Scratchpad：数据到达时访问，其余周期关闭内部活动。
+- AI Accelerator 的 Weight/Activation Buffer：根据 Tile、PE 或数据流阶段选择性启用局部 SRAM。
+- Always-On SRAM：不能频繁断电，但可在没有访问时降低动态功耗并保持快速响应。
+- Pipeline Stall 或 Backpressure：下游无法接收数据时冻结 SRAM 访问，避免重复读取同一地址。
+
+多 Bank SRAM 可根据全局访问请求和 Bank Select 生成局部使能：
+
+\[
+ME_i=GlobalAccess\land BankSelect_i
+\]
+
+在带 Stall 的接口中，常见控制关系为：
+
+```text
+ME = request && !stall
+```
+
+实际设计还应考虑 Arbitration、Read Latency 和请求保持协议，不能只按组合条件直接驱动 Macro。
+
+### 18.4 与其他低功耗模式的选择
+
+| 空闲时间或状态 | 常用技术 | 主要原因 |
+| --- | --- | --- |
+| 几个周期 | ME-Gating | 无明显唤醒开销 |
+| 较短空闲 | Light Sleep | 进一步关闭部分外围活动 |
+| 较长空闲且需保留数据 | Periphery Off、Retention、[[sram-source-bias]] | 进一步降低待机漏电 |
+| 很长空闲且无需保留数据 | Power Gating、Shutdown | 获得最低漏电 |
+
+ME-Gating 适合高频、短暂、不可预测的空闲；Power Gating 适合持续时间超过 Break-Even Time 的长空闲。
 
 | 特性 | ME-Gating | Power Gating |
 | --- | --- | --- |
@@ -740,11 +840,14 @@ ME-Gating 通常表示 Memory Enable Gating，即在 Memory Enable/Chip Enable �
 | 唤醒延迟 | 通常极短 | 从短到很长 |
 | 是否需要电源时序 | 通常不需要 | 需要 |
 
-设计要点：
+### 18.5 集成与验证要点
 
-- `ME/CE` 必须满足相对时钟的 Setup/Hold 要求。
+- `ME`、`CE` 或低有效 `CEN` 必须满足相对时钟的 Setup/Hold 要求。
+- ME 无效时，输出 `Q` 可能保持、变为 `X` 或被强制为固定值，应以 Verilog 模型和 Databook 为准。
+- 写操作必须确保 ME、Write Enable、地址、数据和 Write Mask 在同一有效周期对齐。
 - 测试和 MBIST 模式通常需要绕过或强制打开 Gating。
-- ME-Gating 不会显著消除 BitCell 和 Periphery 的静态漏电。
+- 应确认 Macro 内部是否已经实现 Gating，避免 SoC 外部重复门控时钟而破坏时序、DFT 或 Clock Tree 要求。
+- Bank-Level Gating 必须验证未选 Bank 不产生功能访问，并评估选择信号的 Glitch 和跨时钟域问题。
 - 某些厂商可能对 “ME-Gating” 使用不同定义，应核对其端口和状态表。
 
 ---
