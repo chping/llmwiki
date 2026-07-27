@@ -1,7 +1,7 @@
 ---
 category: topic
 created: 2026-07-24
-updated: 2026-07-24
+updated: 2026-07-27
 tags:
   - SRAM
   - memory-compiler
@@ -765,7 +765,18 @@ Dual Rail
 
 ME-Gating 通常表示 Memory Enable Gating，即在 Memory Enable/Chip Enable 非活动时，门控 SRAM 内部时钟和动态控制路径，避免不必要的 Precharge、Decoder、WordLine、Sense Amplifier 和输出翻转。
 
-### 18.1 工作原理
+### 18.1 ME-Gating 与 CEB-Gating 的关系
+
+ME-Gating 是通用技术名称，CEB-Gating 则强调使用低有效 Chip Enable Bar（`CEB`）作为门控条件。对于以 `CEB` 为使能端口的同步 SRAM，CEB-Gating 通常就是 ME-Gating 的一种具体实现或厂商命名：
+
+| `CEB` 状态 | SRAM 状态 | 内部行为 |
+| --- | --- | --- |
+| `CEB = 0` | 选中 | 允许内部时钟和读写访问路径活动 |
+| `CEB = 1` | 未选中 | 门控内部时钟或访问脉冲，抑制无效动态切换 |
+
+严格来说，CEB-Gating 是信号和接口相关的名称，而 ME-Gating 的范围更宽，也可能由 `ME`、`CE`、Bank Enable、Read Enable 或内部访问请求控制，因此两者不应在所有产品中无条件画等号。不同 Macro 在未使能时关闭的范围也可能不同：有的只门控内部时钟，有的还抑制 Precharge、Decoder、WordLine 和 Sense Amplifier 等动态路径，应以 Databook 的端口定义、状态表和功耗说明为准。此外，电源监控或电池备份电路中的 CE Gating 可能表示掉电期间强制禁止 SRAM 写入，属于写保护功能，不是这里讨论的低功耗 CEB-Gating。
+
+### 18.2 工作原理
 
 同步 SRAM 即使地址和数据没有变化，只要时钟继续进入内部控制路径，仍可能触发地址锁存、译码、BitLine 预充电、WordLine 驱动、Sense Amplifier、Write Driver、Self-Timing 或输出寄存器切换。ME-Gating 在没有有效访问时阻止这些动作：
 
@@ -792,14 +803,14 @@ $$
 
 ME-Gating 通过减少无效访问降低活动因子 $\alpha$。它通常不会显著降低 BitCell 和 Periphery 的静态漏电。
 
-### 18.2 主要作用
+### 18.3 主要作用
 
 - 在空闲周期停止 Decoder、WordLine、BitLine 和 Sense/Write 路径的无效切换。
 - 降低动态功耗、峰值电流、电源噪声和不必要的 Read Disturb。
 - 在保持供电和数据的同时提供接近零或一个时钟周期的恢复延迟。
 - 对多 Bank SRAM 只使能目标 Bank，避免整块 Memory 同时活动。
 
-### 18.3 典型使用场景
+### 18.4 典型使用场景
 
 - Cache 或 Register File：只有地址选择或访问请求对应的 Bank/Way 使能，其他 Bank 保持 Gated；是否能在 Cache Hit 确认前关闭 Data Array 取决于具体访问架构。
 - DMA、视频行缓存、网络 Packet Buffer 和 DSP Scratchpad：数据到达时访问，其余周期关闭内部活动。
@@ -821,7 +832,7 @@ ME = request && !stall
 
 实际设计还应考虑 Arbitration、Read Latency 和请求保持协议，不能只按组合条件直接驱动 Macro。
 
-### 18.4 与其他低功耗模式的选择
+### 18.5 与其他低功耗模式的选择
 
 | 空闲时间或状态 | 常用技术 | 主要原因 |
 | --- | --- | --- |
@@ -840,7 +851,7 @@ ME-Gating 适合高频、短暂、不可预测的空闲；Power Gating 适合持
 | 唤醒延迟 | 通常极短 | 从短到很长 |
 | 是否需要电源时序 | 通常不需要 | 需要 |
 
-### 18.5 集成与验证要点
+### 18.6 集成与验证要点
 
 - `ME`、`CE` 或低有效 `CEN` 必须满足相对时钟的 Setup/Hold 要求。
 - ME 无效时，输出 `Q` 可能保持、变为 `X` 或被强制为固定值，应以 Verilog 模型和 Databook 为准。

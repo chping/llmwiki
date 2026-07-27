@@ -1,7 +1,7 @@
 ---
 category: topic
 created: 2026-07-24
-updated: 2026-07-24
+updated: 2026-07-27
 tags:
   - index
 summary: 芯片设计、先进器件、SRAM 与 Agentic EDA 研究知识库导航。
@@ -68,8 +68,8 @@ source_uri:
 
 ### 最近更新
 
+- 2026-07-27 · [[topics/sram-memory-compiler|SRAM Memory Compiler 功能与配置]] — SRAM Memory Compiler 的容量配置、阵列组织、输入 Slew、输出负载、低功耗、测试冗余、交付视图及选型签核说明。
 - 2026-07-24 · [[topics/sram|SRAM]] — SRAM 的基本原理、位单元结构、关键指标、阵列组织、设计流程与先进工艺研究方向。
-- 2026-07-24 · [[topics/sram-memory-compiler|SRAM Memory Compiler 功能与配置]] — SRAM Memory Compiler 的容量配置、阵列组织、输入 Slew、输出负载、低功耗、测试冗余、交付视图及选型签核说明。
 - 2026-07-24 · [[topics/sram-source-bias|SRAM Source Bias]] — SRAM Source Bias 通过待机时调整 Cell 源极电位降低亚阈值漏电，并在功耗、数据保持裕量和唤醒开销之间进行权衡。
 - 2026-06-10 · [[papers/ning_2026_code|Code as Agent Harness]] — 论文提出 code as agent harness 视角，把代码视为智能体推理、行动、状态管理、反馈验证和多智能体协作的可执行基础设施，并综述接口、机制、扩展与开放问题。
 - 2026-06-10 · [[papers/chendeli_202606_auto_research_survey|From Copilots to Colleagues: A Survey of Autonomous Research Agents in the Age of Foundation Models]] — 本文综述基础模型时代的自主研究代理，提出 L1-L5 自主性分类、四类架构模式和六项开放问题，指出当前前沿多停留在有边界的 L4，自主选题与可靠自评仍是关键瓶颈。
